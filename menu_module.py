@@ -11,8 +11,13 @@ def print_top_level_menu():
   print("2. Find someone you know")
   print("3. Learn a new skill")
 
-# To do
+
 # Prints skills for the user to select
 def print_skills_menu():
-
-  pass
+  print("\n1. Web Development")
+  print("2. Coding")
+  print("3. Communication")
+  print("4. Resume Critique")
+  print("5. Microsoft Excel")
+  print("6. Return to Previous Screen")
+  

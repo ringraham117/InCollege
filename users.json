@@ -5,39 +5,7 @@
       "password": "password"
     },
     {
-      "username": "user2",
-      "password": "password"
-    },
-    {
-      "username": "user2",
-      "password": "password"
-    },
-    {
-      "username": "user3",
-      "password": "password"
-    },
-    {
-      "username": "user4",
-      "password": "password"
-    },
-    {
-      "username": "user5",
-      "password": "password"
-    },
-    {
-      "username": "user6",
-      "password": "password"
-    },
-    {
-      "username": "user5",
-      "password": "password"
-    },
-    {
       "username": "ryani",
-      "password": "password"
-    },
-    {
-      "username": "kingraham",
       "password": "password"
     },
     {
@@ -45,16 +13,12 @@
       "password": "password"
     },
     {
-      "username": "user747",
-      "password": "password"
-    },
-    {
-      "username": "james_student",
-      "password": "password"
-    },
-    {
       "username": "namira",
       "password": "Bullbull "
+    },
+    {
+      "username": "user2",
+      "password": "Password1!"
     }
   ]
 }

@@ -4,9 +4,13 @@ import menu_module
 def create_new_user():
   while True:
 
+        print("\nCreate a new user:")
         username = input("Enter a username: ")
         password = input("Enter a password: ")
 
+        #Temporarily
+        #print(password_is_valid(password))
+    
         # Cannot add more users
         if not db.can_add_more_users():
 
@@ -33,13 +37,30 @@ def create_new_user():
 
 
 # To do
+# username_input = a string that user enters as their username to create a new account
 # Returns true if the username is not already in the JSON file
 # Otherwise, return False
-def username_is_unique(user_input):
-    return True
+def username_is_unique(username_input):
+
+  # Temporary
+  #print()
+  
+  # Iterates through each "user" in list
+  for user in db.database["users"]:
+    # To do: if current user's username matches the username_input
+
+      # To do: Return false
+    if user["username"] in username_input:
+      return False
+      
+  return True
+
+  # Temporary
+  #print()  
+  
 
 
-# To do
+
 # Returns true if the password is 8-12 characters, has a capital letter, has a digit, and had a special character
 # Otherwise, return False
 def password_is_valid(password_input):
@@ -57,6 +78,7 @@ def password_is_valid(password_input):
     print("Password must have atleast one numeral.")
   else:
     print("Password has been created successfully!")
+    return True
   
 # Returns True if the password contains a special character
 # Returns False if the password does not contain a special character
@@ -73,7 +95,9 @@ def password_contains_special_char(password_input):
 def login():
 
     while True:
-        username = input("\nUsername: ")
+
+        print("\nLogin:")
+        username = input("Username: ")
         password = input("Password: ")
 
         if db.user_exists_in_db(username, password):
@@ -93,3 +117,23 @@ def login():
 
     elif user_input == "3":
         menu_module.print_skills_menu()
+        user_input = input("Enter a selection: ")
+
+        if user_input == "1":
+          print("Under construction")
+          
+        elif user_input == "2":
+          print("Under construction")
+          
+        elif user_input == "3":
+          print("Under construction")
+          
+        elif user_input == "4":
+          print("Under construction")
+          
+        elif user_input == "5":
+          print("Under construction")
+        
+        elif user_input == "6":
+          menu_module.print_top_level_menu()
+  

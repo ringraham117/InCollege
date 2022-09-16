@@ -4,18 +4,25 @@ database = {}
 
 with open("users.json") as data_file:
 
-    database = json.load(data_file)
+  # database is a Python dictionary 
+  database = json.load(data_file)
 
-# To do
-# Returns True if the JSON file has less than 5 users
-# Otherwise, return False
+  # Temporary
+  print( "Length of the user list: " + str( len(database["users"]) ) )
+  print( "Data type of database[\"users\"]: " + str( type(database["users"]) ) )
+  
+# Returns True if the list of users has less than 5 users
+# Otherwise, return False -commented out for checking same username
 def can_add_more_users():
+  if (int(str(len(database["users"])))) < 5:
     return True
+  else:
+    return False
   
 def user_exists_in_db(username_input, password_input):
 
     for user in database["users"]:
-        if username_input == user["username"] and password_input == user["password"]:
+        if user["username"]  == username_input and user["password"] == password_input:
             return True
     
     return False
