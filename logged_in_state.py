@@ -1,3 +1,5 @@
+from learn_a_skill_state import goto_learn_a_skill_state
+
 import menu
 
 def goto_logged_in_state():
@@ -14,4 +16,4 @@ def goto_logged_in_state():
     goto_logged_in_state()
 
   elif menu.user_chose_to_learn_a_skill(user_input):
-    pass
+    goto_learn_a_skill_state()
