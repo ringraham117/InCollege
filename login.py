@@ -1,7 +1,6 @@
 import database as db
 import menu
 
-# To do
 # username_input = a string that user enters as their username to create a new account
 # Returns true if the username is not already in the JSON file
 # Otherwise, return False
