@@ -6,14 +6,6 @@ with open("users.json") as data_file:
 
   # database is a Python dictionary 
   database = json.load(data_file)
-  
-# Returns True if the list of users has less than 5 users
-# Otherwise, return False -commented out for checking same username
-# def can_add_more_users():
-#   if (int(str(len(database["users"])))) < 5:
-#     return True
-#   else:
-#     return False
 
 def can_add_more_users():
   if len(database["users_list"]) < 5:
