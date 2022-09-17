@@ -5,32 +5,28 @@ import menu
 
 def goto_start_menu_state():
 
-    while True:
-        menu.print_start_menu()
-        user_input = input("\nEnter a selection: ")
+    menu.print_start_menu()
+    user_input = input("\nEnter a selection: ")
 
-        if menu.user_chose_to_login(user_input):
-            goto_logging_in_state()
+    if menu.user_chose_to_login(user_input):
+        goto_logging_in_state()
 
-        elif menu.user_chose_to_create_new_account(user_input):
-            goto_create_new_account_state()
+    elif menu.user_chose_to_create_new_account(user_input):
+        goto_create_new_account_state()
 
-        else:
-            print("Invalid selection. Please try again.")
-
+    else:
+        print("Invalid selection. Please try again.")
+        goto_start_menu_state()
 
 def goto_logging_in_state():
 
-    while True:
-        print("\nLogin:")
-        username = input("Username: ")
-        password = input("Password: ")
+    print("\n\nLogin:")
+    username = input("Username: ")
+    password = input("Password: ")
 
-        if db.user_exists_in_db(username, password):
-            break
-
-        else:
-            print("Incorrect username/password, please try again.")
+    if not db.user_exists_in_db(username, password):
+        print("\nIncorrect username/password, please try again.")
+        goto_logging_in_state()
 
     print("\nYou have successfully logged in.")
     goto_logged_in_state()
@@ -42,39 +38,51 @@ def goto_logged_in_state():
     user_input = input("\nEnter a selection: ")
 
     if menu.user_chose_to_find_job(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
         goto_logged_in_state()
 
     elif menu.user_chose_to_find_someone(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
         goto_logged_in_state()
 
     elif menu.user_chose_to_learn_a_skill(user_input):
         goto_learn_a_skill_state()
 
+    else:
+        print("\nInvalid selection.")
+        goto_logged_in_state()
+
 
 def goto_learn_a_skill_state():
     menu.print_skills_menu()
-    user_input = input("Enter a selection: ")
+    user_input = input("\nEnter a selection: ")
 
     if menu.user_chose_to_learn_web_dev(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
+        goto_learn_a_skill_state()
 
     elif menu.user_chose_to_learn_coding(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
+        goto_learn_a_skill_state()
 
     elif menu.user_chose_to_learn_communication(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
+        goto_learn_a_skill_state()
 
     elif menu.user_chose_to_learn_resume_critique(user_input):
-        print("Under construction.")
-
+        print("\nUnder construction.")
+        goto_learn_a_skill_state()
+    
     elif menu.user_chose_to_learn_excel(user_input):
-        print("Under construction.")
+        print("\nUnder construction.")
+        goto_learn_a_skill_state()
 
     elif menu.user_chose_to_goto_top_level_menu(user_input):
-        goto_logged_in_state()
+        goto_logged_in_state()        
 
+    else:
+        print("\nInvalid selection")
+        goto_learn_a_skill_state()
 
 def goto_create_new_account_state():
 

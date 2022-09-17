@@ -1,13 +1,13 @@
 def print_start_menu():
 
-  print("\nInCollege")
+  print("\n\nInCollege")
   print("---------")
   print("1. Login")
   print("2. Sign up")
 
 def print_top_level_menu():
 
-  print("\nWhat do you want to do?")
+  print("\n\nWhat do you want to do?")
   print("1. Search for an internship/job")
   print("2. Find someone you know")
   print("3. Learn a new skill")
@@ -15,7 +15,7 @@ def print_top_level_menu():
 
 # Prints skills for the user to select
 def print_skills_menu():
-  print("\nWhat skill do you want to learn?")
+  print("\n\nWhat skill do you want to learn?")
   print("1. Web Development")
   print("2. Coding")
   print("3. Communication")
