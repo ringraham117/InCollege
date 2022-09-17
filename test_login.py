@@ -16,7 +16,6 @@ def test_password_contains_number():
     assert login.password_contains_number("abcdefghi") == False
     assert login.password_contains_number("Validpas1!") == True
 
-def password_contains_special_char():
+def test_password_contains_special_char():
     assert login.password_contains_special_char("abcdefghi") == False
     assert login.password_contains_special_char("Validpas1!") == True
-

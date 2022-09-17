@@ -7,14 +7,16 @@ def print_start_menu():
 
 def print_top_level_menu():
 
-  print("\n1. Search for an internship/job")
+  print("\nWhat do you want to do?")
+  print("1. Search for an internship/job")
   print("2. Find someone you know")
   print("3. Learn a new skill")
 
 
 # Prints skills for the user to select
 def print_skills_menu():
-  print("\n1. Web Development")
+  print("\nWhat skill do you want to learn?")
+  print("1. Web Development")
   print("2. Coding")
   print("3. Communication")
   print("4. Resume Critique")
@@ -55,3 +57,39 @@ def user_chose_to_learn_a_skill(user_input):
 
   else:
     return False
+
+def user_chose_to_learn_web_dev(user_input):
+  if user_input == "1":
+    return True
+
+  else:
+    return False
+
+def user_chose_to_learn_coding(user_input):
+  if user_input == "2":
+    return True
+
+  else:
+    return False
+
+def user_chose_to_learn_communication(user_input):
+  if user_input == "3":
+    return True
+
+  else:
+    return False
+
+# To do:
+# Return true if user input is 4
+def user_chose_to_learn_resume_critique(user_input):
+  pass
+
+# To do:
+# Return true if user input is 5
+def user_chose_to_learn_excel(user_input):
+  pass
+
+# To do:
+# Return true if user input is 6
+def user_chose_to_goto_top_level_menu(user_input):
+  pass
