@@ -1,13 +1,14 @@
 import database as db
 import menu
 
+# To do
 # username_input = a string that user enters as their username to create a new account
 # Returns true if the username is not already in the JSON file
 # Otherwise, return False
 def username_is_unique(username_input):
   
   for user in db.database["users_list"]:
-    if user["username"] in username_input:
+    if user["username"] == username_input:
       return False
       
   return True
