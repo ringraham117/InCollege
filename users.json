@@ -2,22 +2,22 @@
   "users_list": [
     {
       "username": "user1",
-      "password": "password"
+      "password": "Password1!"
     },
     {
-      "username": "ryani",
-      "password": "password"
+      "username": "user2",
+      "password": "Password1!"
     },
     {
-      "username": "wingraham",
-      "password": "password"
+      "username": "user3",
+      "password": "Password1!"
     },
     {
-      "username": "namira",
-      "password": "Bullbull "
+      "username": "user4",
+      "password": "Password1!"
     },
     {
-      "username": "user",
+      "username": "\u001b[A\u001b[B\u001auser5",
       "password": "Password1!"
     }
   ]
