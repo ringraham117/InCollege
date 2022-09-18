@@ -24,78 +24,34 @@ def print_skills_menu():
   print("6. Return to Previous Screen")
 
 def user_chose_to_login(user_input):
-  if user_input == "1":
-    return True
-
-  else:
-    return False
+  return user_input == "1"
 
 def user_chose_to_create_new_account(user_input):
-  if user_input == "2":
-    return True
-
-  else:
-      return False
+  return user_input == "2"    
 
 def user_chose_to_find_job(user_input):
-  if user_input == "1":
-      return True
-
-  else:
-    return False
-
+  return user_input == "1"
+      
 def user_chose_to_find_someone(user_input):
-  if user_input == "2":
-      return True
-
-  else:
-    return False
+  return user_input == "2"    
 
 def user_chose_to_learn_a_skill(user_input):
-  if user_input == "3":
-    return True
-
-  else:
-    return False
+  return user_input == "3"  
 
 def user_chose_to_learn_web_dev(user_input):
-  if user_input == "1":
-    return True
-
-  else:
-    return False
+  return user_input == "1"    
 
 def user_chose_to_learn_coding(user_input):
-  if user_input == "2":
-    return True
-
-  else:
-    return False
+  return user_input == "2"    
 
 def user_chose_to_learn_communication(user_input):
-  if user_input == "3":
-    return True
-
-  else:
-    return False
-
+  return user_input == "3"
+    
 def user_chose_to_learn_resume_critique(user_input):
-  if user_input == "4":
-    return True
-
-  else:
-    return False
-
+  return user_input == "4"
+    
 def user_chose_to_learn_excel(user_input):
-  if user_input == "5":
-    return True
-
-  else:
-    return False
-
+  return user_input == "5"
+    
 def user_chose_to_goto_top_level_menu(user_input):
-  if user_input == "6":
-    return True
-
-  else:
-    return False
+  return user_input == "6"
