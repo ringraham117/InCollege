@@ -1,4 +1,21 @@
 import login
+import json
+import database as db
+
+def test_username_is_unique():
+  # Clear the database
+  database = {"users_list": []}
+  with open("users.json", "w") as myFile:
+        json.dump(database, myFile, indent=2)
+
+  # Check that <some_username> is unique (via assert) 
+  assert login.username_is_unique("user5", db.get_database()) == True
+
+  # Add a user that has <some_username>
+  db.add_user_to_db("user5", "Password1!")
+  
+  # Check that <some_username> is no longer unique (via assert)
+  assert login.username_is_unique("user5", db.get_database()) == False
 
 def test_password_is_too_short():
     assert login.password_is_too_short("abc")== True
@@ -19,3 +36,4 @@ def test_password_contains_number():
 def test_password_contains_special_char():
     assert login.password_contains_special_char("abcdefghi") == False
     assert login.password_contains_special_char("Validpas1!") == True
+
