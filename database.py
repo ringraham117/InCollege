@@ -1,14 +1,5 @@
 import json
 
-  
-# Returns True if the list of users has less than 5 users
-# Otherwise, return False -commented out for checking same username
-# def can_add_more_users():
-#   if (int(str(len(database["users"])))) < 5:
-#     return True
-#   else:
-#     return False
-
 def get_database():
   with open("users.json") as data_file:
     database = json.load(data_file)
