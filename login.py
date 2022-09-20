@@ -1,14 +1,12 @@
-import database as db
-import menu
-
 # To do
 # username_input = a string that user enters as their username to create a new account
+# database = a Python dictionary
 # Returns true if the username is not already in the JSON file
 # Otherwise, return False
-def username_is_unique(username_input):
+def username_is_unique(username_input, database):
   
-  for user in db.database["users_list"]:
-    if user["username"] == username_input:
+  for user in database["users_list"]:
+    if user["username"] in username_input:
       return False
       
   return True
@@ -24,7 +22,7 @@ def password_is_too_long(password):
   if len(password) > 12:
     return True
 
-  else:
+  else:   
     return False
 
 def password_contains_uppercase_letter(password):
