@@ -51,16 +51,10 @@ def user_chose_to_learn_communication(user_input):
 # To do:
 # Return true if user input is 4
 def user_chose_to_learn_resume_critique(user_input):
-    return user_input == "4"
-
-
-# To do:
-# Return true if user input is 5
+  return user_input == "4"
+    
 def user_chose_to_learn_excel(user_input):
-    return user_input == "5"
-
-
-# To do:
-# Return true if user input is 6
+  return user_input == "5"
+    
 def user_chose_to_goto_top_level_menu(user_input):
-    return user_input == "6"
+  return user_input == "6"

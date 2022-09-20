@@ -1,6 +1,22 @@
 {
   "users_list": [
     {
+      "username": "user1",
+      "password": "Password1!"
+    },
+    {
+      "username": "user2",
+      "password": "Password1!"
+    },
+    {
+      "username": "user3",
+      "password": "Password1!"
+    },
+    {
+      "username": "user4",
+      "password": "Password1!"
+    },
+    {
       "username": "user5",
       "password": "Password1!"
     }
