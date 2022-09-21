@@ -15,14 +15,17 @@ def goto_start_menu_state():
     user_input = input("\nEnter a selection: ")
 
     if menu.user_chose_to_login(user_input):
-        goto_logging_in_state()
+        return goto_logging_in_state()
 
     elif menu.user_chose_to_create_new_account(user_input):
-        goto_create_new_account_state()
+        return goto_create_new_account_state()
+
+    elif menu.user_chose_to_watch_video(user_input):
+        return goto_watch_video_state()
 
     else:
         print("Invalid selection. Please try again.")
-        goto_start_menu_state()
+        return goto_start_menu_state()
 
 
 def goto_logging_in_state():
@@ -113,4 +116,14 @@ def goto_create_new_account_state():
     print("Account successfully created.")
     goto_start_menu_state()
 
+def goto_watch_video_state():            
+    print("\n\nVideo is now playing.")
+    menu.print_video_menu()
+    user_input = input("\nEnter a selection: ")
 
+    if user_input == "1":
+        return goto_start_menu_state()
+
+    else:
+        print("\nInvalid selection.")
+        return goto_watch_video_state()
