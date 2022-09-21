@@ -23,6 +23,9 @@ def goto_start_menu_state():
     elif menu.user_chose_to_watch_video(user_input):
         return goto_watch_video_state()
 
+    elif user_input == "4":
+        return goto_search_for_user_state()
+
     else:
         print("Invalid selection. Please try again.")
         return goto_start_menu_state()
@@ -117,13 +120,43 @@ def goto_create_new_account_state():
     goto_start_menu_state()
 
 def goto_watch_video_state():            
-    print("\n\nVideo is now playing.")
     menu.print_video_menu()
     user_input = input("\nEnter a selection: ")
 
     if user_input == "1":
+        pass
+
+    elif user_input == "2":
         return goto_start_menu_state()
 
     else:
-        print("\nInvalid selection.")
+        print("Invalid selection.")
         return goto_watch_video_state()
+
+    print("Video is now playing.")
+    return goto_watch_video_state()
+
+def goto_search_for_user_state():   
+    menu.print_search_for_user_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+        
+    elif user_input == "2":
+        return goto_start_menu_state()
+
+    else:
+        print("Invalid selection. Please try again.")
+        return goto_search_for_user_state()
+
+    first_name = input("Enter their first name: ")
+    last_name = input("Enter their last name: ")
+
+    if db.name_found_in_db(first_name, last_name):
+        print("\nThey are a part of the InCollege system.")
+        return goto_start_menu_state()
+
+    else:
+        print("\nThey are not yet a part of the InCollege system.")
+        return goto_search_for_user_state()
