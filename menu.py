@@ -4,6 +4,7 @@ def print_start_menu():
     print("---------")
     print("1. Login")
     print("2. Sign up")
+    print("3. Play video (\"Why Join InCollege?\")")
 
 
 def print_top_level_menu():
@@ -24,11 +25,18 @@ def print_skills_menu():
     print("5. Microsoft Excel")
     print("6. Return to Previous Screen")
 
+def print_video_menu():
+    print("\n\nWhat do you want to do?")
+    print("1. Return to Start Menu")
+
 def user_chose_to_login(user_input):
     return user_input == "1"
         
 def user_chose_to_create_new_account(user_input):
     return user_input == "2"
+
+def user_chose_to_watch_video(user_input):
+    return user_input == "3"
 
 def user_chose_to_find_job(user_input):
     return user_input == "1"        
@@ -47,9 +55,7 @@ def user_chose_to_learn_coding(user_input):
     
 def user_chose_to_learn_communication(user_input):
     return user_input == "3"
-       
-# To do:
-# Return true if user input is 4
+
 def user_chose_to_learn_resume_critique(user_input):
   return user_input == "4"
     
