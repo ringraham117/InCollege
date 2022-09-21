@@ -1,9 +1,15 @@
 import database as db
 import login
 import menu
+import src.pages.job_search_page as job_search_page
+import src.constants.student_success_story as story
+
+loggedInUser = ""
 
 
 def goto_start_menu_state():
+
+    print(story.STUDENT_SUCCESS_STORY)
 
     menu.print_start_menu()
     user_input = input("\nEnter a selection: ")
@@ -31,7 +37,9 @@ def goto_logging_in_state():
         
 
     print("\nYou have successfully logged in.")
-    return goto_logged_in_state()
+    global loggedInUser
+    loggedInUser = username
+    goto_logged_in_state()
 
 
 def goto_logged_in_state():
@@ -40,7 +48,7 @@ def goto_logged_in_state():
     user_input = input("\nEnter a selection: ")
 
     if menu.user_chose_to_find_job(user_input):
-        print("\nUnder Construction.")
+        job_search_page.display_job_search_page()
 
     elif menu.user_chose_to_find_someone(user_input):
         print("\nUnder Construction.")
@@ -75,6 +83,8 @@ def goto_learn_a_skill_state():
 def goto_create_new_account_state():
 
     print("\nCreate a new user:")
+    first_name = input("Enter first name: ")
+    last_name = input("Enter last name: ")
     username = input("Enter a username: ")
     password = input("Enter a password: ")
 
@@ -99,7 +109,8 @@ def goto_create_new_account_state():
     elif not login.password_contains_special_char(password):
         print("Password must have atleast one special character.")        
 
-    else:
-        db.add_user_to_db(username, password)
-        print("Account successfully created.")
-        goto_start_menu_state()
+    db.add_user_to_db(first_name, last_name, username, password)
+    print("Account successfully created.")
+    goto_start_menu_state()
+
+
