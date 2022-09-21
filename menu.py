@@ -5,10 +5,10 @@ def print_start_menu():
     print("1. Login")
     print("2. Sign up")
     print("3. Play video (\"Why Join InCollege?\")")
+    print("4. Search for InCollege users")
 
 
 def print_top_level_menu():
-
     print("\nWhat do you want to do?")
     print("1. Search for an internship/job")
     print("2. Find someone you know")
@@ -26,8 +26,18 @@ def print_skills_menu():
     print("6. Return to Previous Screen")
 
 def print_video_menu():
-    print("\n\nWhat do you want to do?")
-    print("1. Return to Start Menu")
+    print("\nPlay the \"Why Join InCollege?\" video")
+    print("----------------------------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to Start Menu")
+
+def print_search_for_user_menu():
+    print("\nSearch for an active InCollege user")
+    print("-------------------------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to Start Menu")
 
 def user_chose_to_login(user_input):
     return user_input == "1"
