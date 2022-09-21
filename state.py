@@ -33,8 +33,8 @@ def goto_logging_in_state():
 
     if not db.user_exists_in_db(username, password):
         print("Incorrect username/password, please try again.")
-        goto_logging_in_state()
-        return
+        return goto_logging_in_state()
+        
 
     print("\nYou have successfully logged in.")
     global loggedInUser
@@ -54,7 +54,7 @@ def goto_logged_in_state():
         print("\nUnder Construction.")
 
     elif menu.user_chose_to_learn_a_skill(user_input):
-        goto_learn_a_skill_state()
+        return goto_learn_a_skill_state()
 
 
 def goto_learn_a_skill_state():
@@ -77,7 +77,7 @@ def goto_learn_a_skill_state():
         print("\nUnder construction.")
 
     elif menu.user_chose_to_goto_top_level_menu(user_input):
-        goto_logged_in_state()
+        return goto_logged_in_state()
 
 
 def goto_create_new_account_state():
@@ -89,35 +89,28 @@ def goto_create_new_account_state():
     password = input("Enter a password: ")
 
     if not db.can_add_more_users():
-        print(
-            "All permitted accounts have been created, please come back later."
-        )
-        return
+        print("All permitted accounts have been created, please come back later.")        
 
     elif not login.username_is_unique(username, db.get_database()):
-        print("That username is not available.")
-        return
+        print("That username is not available.")        
 
     elif login.password_is_too_short(password):
-        print("Password is too short.")
-        return
+        print("Password is too short.")    
 
     elif login.password_is_too_long(password):
-        print("Password is too long.")
-        return
+        print("Password is too long.")        
 
     elif not login.password_contains_uppercase_letter(password):
-        print('Password must have at least one uppercase letter.')
-        return
+        print('Password must have at least one uppercase letter.')        
 
     elif not login.password_contains_number(password):
-        print("Password must have at least one numeral.")
-        return
+        print("Password must have at least one numeral.")        
 
     elif not login.password_contains_special_char(password):
-        print("Password must have atleast one special character.")
-        return
+        print("Password must have atleast one special character.")        
 
     db.add_user_to_db(first_name, last_name, username, password)
     print("Account successfully created.")
     goto_start_menu_state()
+
+

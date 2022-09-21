@@ -122,12 +122,6 @@ What skill do you want to learn?
 6. Return to Previous Screen
 '''
 
-
-# What do you want to do?
-# 1. Search for an internship/job
-# 2. Find someone you know
-# 3. Learn a new skill
-
 def test_create_account(capsys, monkeypatch):
 
     # Defines an empty dictionary with the correct format

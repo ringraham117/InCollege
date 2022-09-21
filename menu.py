@@ -25,29 +25,31 @@ def print_skills_menu():
     print("6. Return to Previous Screen")
 
 def user_chose_to_login(user_input):
-  return user_input == "1"
-
+    return user_input == "1"
+        
 def user_chose_to_create_new_account(user_input):
-  return user_input == "2"    
+    return user_input == "2"
 
 def user_chose_to_find_job(user_input):
-  return user_input == "1"
-      
+    return user_input == "1"        
+
 def user_chose_to_find_someone(user_input):
-  return user_input == "2"    
-
+    return user_input == "2"
+        
 def user_chose_to_learn_a_skill(user_input):
-  return user_input == "3"  
-
+    return user_input == "3"
+        
 def user_chose_to_learn_web_dev(user_input):
-  return user_input == "1"    
+    return user_input == "1"
 
 def user_chose_to_learn_coding(user_input):
-  return user_input == "2"    
-
-def user_chose_to_learn_communication(user_input):
-  return user_input == "3"
+    return user_input == "2"
     
+def user_chose_to_learn_communication(user_input):
+    return user_input == "3"
+       
+# To do:
+# Return true if user input is 4
 def user_chose_to_learn_resume_critique(user_input):
   return user_input == "4"
     
