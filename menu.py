@@ -1,7 +1,7 @@
 def print_start_menu():
 
-    print("\nInCollege")
-    print("---------")
+    print("\nWelcome to InCollege")
+    print("--------------------")
     print("1. Login")
     print("2. Sign up")
     print("3. Play video (\"Why Join InCollege?\")")
@@ -9,15 +9,20 @@ def print_start_menu():
 
 
 def print_top_level_menu():
-    print("\nWhat do you want to do?")
+    print("\nTop-level Menu")
+    print("--------------")
+    print("What do you want to do?")
     print("1. Search for an internship/job")
     print("2. Find someone you know")
     print("3. Learn a new skill")
+    print("4. Log out")
 
 
 # Prints skills for the user to select
 def print_skills_menu():
-    print("\nWhat skill do you want to learn?")
+    print("\nLearn a Skill Menu")
+    print("------------------")
+    print("What skill do you want to learn?")
     print("1. Web Development")
     print("2. Coding")
     print("3. Communication")
@@ -38,6 +43,48 @@ def print_search_for_user_menu():
     print("What do you want to do?")
     print("1. Continue")
     print("2. Return to Start Menu")
+
+def print_find_someone_you_know_menu():
+    print("\nFind someone you know")
+    print("-----------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to Top-level Menu")
+
+def print_learn_web_dev_menu():
+    print("\nLearn Web Development")
+    print("---------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to the Learn a Skill Menu")
+
+def print_learn_coding_menu():
+    print("\nLearn Coding")
+    print("------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to the Learn a Skill Menu")    
+
+def print_learn_communication_menu():
+    print("\nLearn Communication")
+    print("-------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to the Learn a Skill Menu")    
+
+def print_learn_resume_critique_menu():
+    print("\nLearn Resume Critique")
+    print("---------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to the Learn a Skill Menu")    
+
+def print_learn_excel_menu():
+    print("\nLearn Microsoft Excel")
+    print("---------------------")
+    print("What do you want to do?")
+    print("1. Continue")
+    print("2. Return to the Learn a Skill Menu")    
 
 def user_chose_to_login(user_input):
     return user_input == "1"
