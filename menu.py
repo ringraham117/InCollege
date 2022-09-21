@@ -1,4 +1,4 @@
-  def print_start_menu():
+def print_start_menu():
 
     print("\nInCollege")
     print("---------")
