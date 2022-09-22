@@ -57,10 +57,13 @@ def goto_logged_in_state():
         job_search_page.display_job_search_page()
 
     elif menu.user_chose_to_find_someone(user_input):
-        print("\nUnder Construction.")
+        return goto_find_someone_you_know_state()
 
     elif menu.user_chose_to_learn_a_skill(user_input):
         return goto_learn_a_skill_state()
+    
+    elif user_input == "4":
+        return goto_start_menu_state()
 
 
 def goto_learn_a_skill_state():
@@ -68,19 +71,19 @@ def goto_learn_a_skill_state():
     user_input = input("\nEnter a selection: ")
 
     if menu.user_chose_to_learn_web_dev(user_input):
-        print("\nUnder construction.")
+        return goto_learn_web_dev_state()
 
     elif menu.user_chose_to_learn_coding(user_input):
-        print("\nUnder construction.")
+        return goto_learn_coding_state()
 
     elif menu.user_chose_to_learn_communication(user_input):
-        print("\nUnder construction.")
+        return goto_learn_communication_state()
 
     elif menu.user_chose_to_learn_resume_critique(user_input):
-        print("\nUnder construction.")
+        return goto_learn_resume_critique_state()
 
     elif menu.user_chose_to_learn_excel(user_input):
-        print("\nUnder construction.")
+        return goto_learn_excel_state()
 
     elif menu.user_chose_to_goto_top_level_menu(user_input):
         return goto_logged_in_state()
@@ -160,3 +163,105 @@ def goto_search_for_user_state():
     else:
         print("\nThey are not yet a part of the InCollege system.")
         return goto_search_for_user_state()
+
+def goto_find_someone_you_know_state():
+    menu.print_find_someone_you_know_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_logged_in_state()
+
+    else:
+        print("Invalid selection")
+        return goto_find_someone_you_know_state()
+    
+    print("\nUnder Construction.")
+    goto_find_someone_you_know_state()
+
+def goto_learn_web_dev_state():
+    menu.print_learn_web_dev_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_learn_a_skill_state()
+
+    else:
+        print("Invalid selection")
+        return goto_learn_web_dev_state()
+
+    print("\nUnder Construction.")
+    return goto_learn_web_dev_state()
+
+def goto_learn_coding_state():
+    menu.print_learn_coding_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_learn_a_skill_state()
+
+    else:
+        print("Invalid selection")
+        return goto_learn_coding_state()
+
+    print("\nUnder Construction.")
+    return goto_learn_web_dev_state()
+
+def goto_learn_communication_state():
+    menu.print_learn_communication_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_learn_a_skill_state()
+
+    else:
+        print("Invalid selection")
+        return goto_learn_communication_state()
+
+    print("\nUnder Construction.")
+    return goto_learn_communication_state()
+
+def goto_learn_resume_critique_state():
+    menu.print_learn_resume_critique_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_learn_a_skill_state()
+
+    else:
+        print("Invalid selection")
+        return goto_learn_resume_critique_state()
+
+    print("\nUnder Construction.")
+    return goto_learn_resume_critique_state()
+
+def goto_learn_excel_state():
+    menu.print_learn_excel_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        pass
+
+    elif user_input == "2":
+        return goto_learn_a_skill_state()
+
+    else:
+        print("Invalid selection")
+        return goto_learn_excel_state()
+
+    print("\nUnder Construction.")
+    return goto_learn_excel_state()
