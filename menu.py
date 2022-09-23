@@ -6,6 +6,7 @@ def print_start_menu():
     print("2. Sign up")
     print("3. Play video (\"Why Join InCollege?\")")
     print("4. Search for InCollege users")
+    print("5. Exit")
 
 
 def print_top_level_menu():
@@ -38,39 +39,3 @@ def print_search_for_user_menu():
     print("What do you want to do?")
     print("1. Continue")
     print("2. Return to Start Menu")
-
-def user_chose_to_login(user_input):
-    return user_input == "1"
-        
-def user_chose_to_create_new_account(user_input):
-    return user_input == "2"
-
-def user_chose_to_watch_video(user_input):
-    return user_input == "3"
-
-def user_chose_to_find_job(user_input):
-    return user_input == "1"        
-
-def user_chose_to_find_someone(user_input):
-    return user_input == "2"
-        
-def user_chose_to_learn_a_skill(user_input):
-    return user_input == "3"
-        
-def user_chose_to_learn_web_dev(user_input):
-    return user_input == "1"
-
-def user_chose_to_learn_coding(user_input):
-    return user_input == "2"
-    
-def user_chose_to_learn_communication(user_input):
-    return user_input == "3"
-
-def user_chose_to_learn_resume_critique(user_input):
-  return user_input == "4"
-    
-def user_chose_to_learn_excel(user_input):
-  return user_input == "5"
-    
-def user_chose_to_goto_top_level_menu(user_input):
-  return user_input == "6"
