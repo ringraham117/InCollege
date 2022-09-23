@@ -60,7 +60,7 @@ def goto_logged_in_state():
         job_search_page.display_job_search_page()
 
     elif user_input == "2":
-        print("\nUnder Construction.")
+        return goto_find_someone_you_know_state()
 
     elif user_input == "3":
         return goto_learn_a_skill_state()
@@ -74,19 +74,19 @@ def goto_learn_a_skill_state():
     user_input = input("\nEnter a selection: ")
 
     if user_input == "1":
-        print("\nUnder construction.")
+        return goto_learn_web_dev_state()
 
     elif user_input == "2":
-        print("\nUnder construction.")
+        return goto_learn_coding_state()
 
     elif user_input == "3":
-        print("\nUnder construction.")
+        return goto_learn_communication_state()
 
     elif user_input == "4":
-        print("\nUnder construction.")
+        return goto_learn_resume_critique_state()
 
     elif user_input == "5":
-        print("\nUnder construction.")
+        return goto_learn_excel_state()
 
     elif user_input == "6":
         return goto_logged_in_state()
