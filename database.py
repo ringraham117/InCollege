@@ -1,10 +1,10 @@
 import json
 import src.models.user_model as user_model
 
-def get_database():
-  with open("databases/user_credentials.json") as data_file:
-    database = json.load(data_file)
-    return database
+def get_users_list():
+    with open("databases/user_credentials.json") as data_file:
+        database = json.load(data_file)
+        return database["users_list"]
 
 def can_add_more_users():
   with open("databases/user_credentials.json") as data_file:
