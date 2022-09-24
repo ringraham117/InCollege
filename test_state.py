@@ -1,57 +1,117 @@
 import database as db
+import json
 import state
+import pytest
+import menu
 
-# user_input_list = list of strings
-def simulate_user_inputs(monkeypatch, user_input_list):
-    for user_input in user_input_list:
-        monkeypatch.setattr('builtins.input', lambda _: user_input)    
+# Note: Use "Ctrl + /" to comment or uncomment multiple lines at one time.
+# -----------------------------------------------------------------------
 
-def test_quit(monkeypatch, capsys):
+# also i didnt know how to test one case at a time but i figured it out. if anyone doesnt know let me know
 
-    simulate_user_inputs(monkeypatch, ["1", "user", "password", "4", "5"])
+# I'm not 100% sure how to do that. Is there a special command?
+# pytest -vv test_state.py::test_create_account
+#so just use a ::to specify the particular test case
 
-    state.goto_start_menu_state()  
-
-    assert 1 + 1 == 2
+#Im commenting #THIS ONE PASSED when i fix it so we know which ones need worked on
 
 
-# def test_incorrect_login(capsys, monkeypatch):
-#     db.clear_db()
-#     db.add_user_to_db("Elon", "Musk", "good_username", "good_password")
+#THIS ONE PASSED
+#def test_goto_start_menu_state(capsys, monkeypatch):
+def test_success_story(capsys, monkeypatch):
 
-#     # This sends the inputs in the order that you specify
-#     # Make a list of values to simulate writing to the terminal 
-#     # Purposely fail the login and then login successfully to end the login loop.
-#     simulate_user_inputs(monkeypatch, ["good_username", "good_password", "4", "5"])    
+    inputs = iter(["5"])
+
+    # Simulate entering those values into the terminal
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  
+    #call the function
+    state.goto_start_menu_state()
+
+    #Read what was printed to the terminal
+    stdout, stderr = capsys.readouterr()
+
+    #assert output
+    assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+
+# THIS ONE PASSED
+def test_incorrect_login(capsys, monkeypatch):
+
+    # Clear the database to start from a controlled state
+    db.clear_db()
     
-#     # Call the function to simulate logging in
-#     state.goto_logging_in_state()
+    # Adds a user to the system
+    db.add_user_to_db("Tom", "Cruise", "maverick", "topGun22!")
 
-#     # Read what was printed to the terminal
-#     stdout, stderr = capsys.readouterr()
+    # This sends the inputs in the order that you specify
+    # Make a list of values to simulate writing to the terminal
+    # Bad login --> Good login --> Logout --> Exit
+    inputs = iter(["wrong", "passwrong", "maverick", "topGun22!", "4", "5"])
 
-#     # Assert statement
-#     # I think you need to remove the spaces from the beginning of each line. 
-#     assert stdout == '''
-# Login:
-# Incorrect username/password, please try again.
+    # Simulate entering those values into the terminal
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-# Login:
+    # Call the function to simulate logging in
+    state.goto_logging_in_state()
 
-# You have successfully logged in.
+    # Read what was printed to the terminal
+    stdout, stderr = capsys.readouterr()
 
-# What do you want to do?
-# 1. Search for an internship/job
-# 2. Find someone you know
-# 3. Learn a new skill
+    # Assert statement    
+    assert stdout == '''
+Login:
+Incorrect username/password, please try again.
 
-# Under Construction.
-# '''
+Login:
 
-# @pytest.mark.parametrize(
-#     ('user', 'passw'),
-#     (('user1', 'password'), ('user2', 'password')),
-# )
+You have successfully logged in.
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+
+# @pytest.mark.parametrize(('user', 'passw'),   
+#                     ('user', 'password'), ('user2', 'password'),
+#         )
 # def test_logging_in(capsys, monkeypatch, user, passw):
 
 #     # Empties the database
@@ -62,29 +122,37 @@ def test_quit(monkeypatch, capsys):
 #     with open("users.json", "w") as myFile:
 #         json.dump(database, myFile, indent=2)
 
-#     db.add_user_to_db(user,passw)
-  
+
+# # db.add_user_to_db(user, passw)
+#     db.add_user_to_db("Brad", "Pitt", "BPitt", "movieStar1!")
+
 #     # Values simulate writing to the terminal
-#     inputs = iter([user, passw, "3", "1"])
-    
+#     inputs = iter(["BPitt", "movieStar1!", "3", "1"])
+
 #     # Simulates entering the "inputs" into the terminal
 #     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    
+
 #     # Call the function to simulate logging in
 #     state.goto_logging_in_state()
-    
+
 #     # Reads what was printed to the terminal
 #     stdout, stderr = capsys.readouterr()
-    
+
 #     assert stdout == '''
 # Login:
 
 # You have successfully logged in.
 
+# Top-Level Menu
+# --------------
 # What do you want to do?
 # 1. Search for an internship/job
 # 2. Find someone you know
 # 3. Learn a new skill
+# 4.Log out
+
+# Learn a Skill Menu
+# ------------------
 
 # What skill do you want to learn?
 # 1. Web Development
@@ -94,69 +162,115 @@ def test_quit(monkeypatch, capsys):
 # 5. Microsoft Excel
 # 6. Return to Previous Screen
 
-# Under construction.
+# Learn Web Development
+# ---------------------
+# What do you want to do?
+# 1. Continue
+# 2. Return to the Learn a Skill Menu
 # '''
 
-# @pytest.mark.parametrize(('user_selection'), ((1), (2), (3)))
-# def test_logged_in(capsys, monkeypatch, user_selection):
-#   monkeypatch.setattr('builtins.input', lambda _: user_selection)
-#   state.goto_logged_in_state()
+
+@pytest.mark.parametrize(('user_selection'), ((1), (2), (3)))
+def test_logged_in(capsys, monkeypatch, user_selection):
+    monkeypatch.setattr('builtins.input', lambda _: user_selection)
+    state.goto_logged_in_state()
+
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+
+Top-Level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+'''
+
+
+#THIS ONE PASSED
+@pytest.mark.parametrize(('user_selection'), ((1), (2), (3), (4), (5)))
+def test_learn_skill(capsys, monkeypatch, user_selection):
+    monkeypatch.setattr('builtins.input', lambda _: user_selection)
+    state.goto_learn_a_skill_state()
+
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+'''
+
+
+# What do you want to do?
+# 1. Search for an internship/job
+# 2. Find someone you know
+# 3. Learn a new skill
+
+
+def test_create_account(capsys, monkeypatch):
+
+    # Defines an empty dictionary with the correct format
+    database = {"users_list": []}
+
+    # Writes the empty dictionary to the JSON file
+    with open("users.json", "w") as myFile:
+        json.dump(database, myFile, indent=2)
+
+    #inputs = iter([
+    #   "Elon", "Musk", "user5", "Password1!", "1", "user5", "Password1!", "3", "1"
+    #])
+
+    inputs = iter(
+        ["Elon", "Musk", "tesla", "TotheMoon1!", "1", "tesla", "TotheMoon1!"])
   
-#   stdout, stderr = capsys.readouterr()
-#   assert stdout == '''
-# What do you want to do?
-# 1. Search for an internship/job
-# 2. Find someone you know
-# 3. Learn a new skill
-# '''
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-# @pytest.mark.parametrize(('user_selection'), ((1), (2), (3), (4), (5)))
-# def test_learn_skill(capsys, monkeypatch, user_selection):
-#     monkeypatch.setattr('builtins.input', lambda _: user_selection)
-#     state.goto_learn_a_skill_state()
-    
-#     stdout, stderr = capsys.readouterr()
-#     assert stdout == '''
-# What skill do you want to learn?
-# 1. Web Development
-# 2. Coding
-# 3. Communication
-# 4. Resume Critique
-# 5. Microsoft Excel
-# 6. Return to Previous Screen
-# '''
+    state.goto_create_new_account_state()
 
-# def test_create_account(capsys, monkeypatch):
-
-#     # Defines an empty dictionary with the correct format
-#     database = {"users_list": []}
-
-#     # Writes the empty dictionary to the JSON file
-#     with open("users.json", "w") as myFile:
-#         json.dump(database, myFile, indent=2)
+    stdout, stderr = capsys.readouterr()
   
-#     inputs = iter(["user5", "Password1!", "1", "user5", "Password1!", "3", "1"])
-#     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-#     state.goto_create_new_account_state()
-    
-#     stdout, stderr = capsys.readouterr()
-#     assert stdout == '''
-# Create a new user:
-# Account successfully created.
+    assert stdout == '''
+Create a new user:
+Account successfully created.
 
-# InCollege
-# ---------
-# 1. Login
-# 2. Sign up
 
-# Login:
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
-# You have successfully logged in.
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+
+Login:
+
+You have successfully logged in.
+'''
+
+
+#commented out for testing purposes
 
 # What do you want to do?
 # 1. Search for an internship/job
 # 2. Find someone you know
 # 3. Learn a new skill
+# 4. Log Out
+
+# Learn a Skill Menu
+# ------------------
 
 # What skill do you want to learn?
 # 1. Web Development
@@ -166,7 +280,562 @@ def test_quit(monkeypatch, capsys):
 # 5. Microsoft Excel
 # 6. Return to Previous Screen
 
-# Under construction.
-# '''
+
+#THIS ONE PASSED
+## test back option for web development -skill 1
+def test_goto_learn_web_dev_state(capsys, monkeypatch):
+    inputs = iter(["2", "6", "4", "5"])
+  
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    
+    state.goto_learn_web_dev_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+Learn Web Development
+---------------------
+What do you want to do?
+1. Continue
+2. Return to the Learn a Skill Menu
+
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''  
+#THIS ONE PASSED
+##test for learn coding back option - skill 2
+def test_goto_learn_coding_state(capsys, monkeypatch):
+  inputs= iter(["2","6","4","5"])
+      
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  state.goto_learn_coding_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Learn Coding
+------------
+What do you want to do?
+1. Continue
+2. Return to the Learn a Skill Menu
+
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+## THIS ONE PASSED
+#tests back option for commmunication skill - skill 3
+def test_goto_learn_communication_state(capsys, monkeypatch):
+  inputs = iter(["2","6","4","5"])
+  
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  state.goto_learn_communication_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Learn Communication
+-------------------
+What do you want to do?
+1. Continue
+2. Return to the Learn a Skill Menu
+
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+#THIS ONE PASSED
+##tests back option for resume critique - skill 4
+def test_goto_learn_resume_critique_state(capsys, monkeypatch):
+  inputs = iter(["2","6","4","5"])
+    
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  
+  state.goto_learn_resume_critique_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Learn Resume Critique
+---------------------
+What do you want to do?
+1. Continue
+2. Return to the Learn a Skill Menu
+
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+##THIS ONE PASSED
+# tests back option for learn microsoft excel - skill 5
+def test_goto_learn_excel_state(capsys, monkeypatch):
+  inputs = iter(["2","6","4","5"])
+    
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  state.goto_learn_excel_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Learn Microsoft Excel
+---------------------
+What do you want to do?
+1. Continue
+2. Return to the Learn a Skill Menu
+
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+''' 
+#THIS ONE PASSED
+#tests back option in watch video state 
+def test_goto_watch_video_state(capsys, monkeypatch):
+    inputs = iter(["2","5"])
+  
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+    state.goto_watch_video_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+Play the "Why Join InCollege?" video
+----------------------------------------
+What do you want to do?
+1. Continue
+2. Return to Start Menu
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+''' 
+#THIS ONE PASSED
+#tests back option for find people you may know
+def test_goto_find_someone_you_know_state(capsys, monkeypatch): 
+  inputs = iter(["2","4","5"])
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  state.goto_find_someone_you_know_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Find someone you know
+-----------------------
+What do you want to do?
+1. Continue
+2. Return to Top-level Menu
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+#THIS ONE PASSED
+#tests back option for search menu 
+def test_goto_search_for_user_state(capsys, monkeypatch):
+  inputs = iter(["2","5"])
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  state.goto_search_for_user_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Search for an active InCollege user
+-------------------------------------
+What do you want to do?
+1. Continue
+2. Return to Start Menu
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+#THIS ONE PASSED
+#tests back option for learn a new skill
+def test_goto_learn_a_skill_state(capsys, monkeypatch):
+  inputs = iter(["6","4", "5"])
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  state.goto_learn_a_skill_state()
+  stdout, stderr = capsys.readouterr()
+  assert stdout == '''
+Learn a Skill Menu
+------------------
+What skill do you want to learn?
+1. Web Development
+2. Coding
+3. Communication
+4. Resume Critique
+5. Microsoft Excel
+6. Return to Previous Screen
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+#THIS ONE PASSED
+#tests back option in top-level menu
+def test_top_level_back(capsys,monkeypatch):
+    inputs = iter(["4","5"])
+  
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+#   menu.print_top_level_menu()
+    state.goto_logged_in_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+#THIS ONE PASSED
+#tests back option in find a job
+def test_findJob_back(capsys, monkeypatch):
+    inputs = iter(["1","2","4","5"])
+  
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+    state.goto_logged_in_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+What do you want to do?
+
+1. Post a job
+2. Return to previous page
+
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+#THIS ONE PASSED
+#tests the search option of the start menu
+def test_search(capsys,monkeypatch):
+    inputs = iter(["4","1", "Elon", "Musk","4","1", "not", "insystem", "2", "5"])
+  
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+  
+    state.goto_start_menu_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Search for an active InCollege user
+-------------------------------------
+What do you want to do?
+1. Continue
+2. Return to Start Menu
+
+They are a part of the InCollege system.
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Search for an active InCollege user
+-------------------------------------
+What do you want to do?
+1. Continue
+2. Return to Start Menu
+
+They are not yet a part of the InCollege system.
+
+Search for an active InCollege user
+-------------------------------------
+What do you want to do?
+1. Continue
+2. Return to Start Menu
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1. Login
+2. Sign up
+3. Play video ("Why Join InCollege?")
+4. Search for InCollege users
+5. Exit
+
+Program is exiting!
+'''
+
+
 
   
