@@ -44,3 +44,10 @@ def name_found_in_db(first_name, last_name):
           return True
   
   return False
+
+def clear_db():
+    database = {"users_list": []}
+  
+    # Opens the JSON file in write mode
+    with open("databases/user_credentials.json", 'w') as data_file:
+        json.dump(database, data_file, indent=2)
