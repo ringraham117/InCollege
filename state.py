@@ -27,7 +27,7 @@ def goto_start_menu_state():
         return goto_search_for_user_state()
 
     elif user_input == "5":
-        quit()
+        return goto_exit_state()
 
     else:
         print("Invalid selection. Please try again.")
@@ -275,3 +275,6 @@ def goto_learn_excel_state():
 
     print("\nUnder Construction.")
     return goto_learn_excel_state()
+
+def goto_exit_state():
+    print("Program is exiting!")

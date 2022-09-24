@@ -36,10 +36,8 @@ def add_user_to_db(first_name, last_name, username, password):
       json.dump(database, myFile, indent=2)
 
 
-def name_found_in_db(first_name, last_name):
-  database = get_database()
-      
-  for user in database["users_list"]:
+def name_found_in_db(first_name, last_name):      
+  for user in get_users_list():
       if user["first_name"]  == first_name and user["last_name"] == last_name:
           return True
   
