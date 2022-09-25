@@ -49,7 +49,7 @@ Program is exiting!
 def test_incorrect_login(capsys, monkeypatch):
 
     # Clear the database to start from a controlled state
-    db.clear_db()
+    db.clear_users_list()
     
     # Adds a user to the system
     db.add_user_to_db("Tom", "Cruise", "maverick", "topGun22!")
