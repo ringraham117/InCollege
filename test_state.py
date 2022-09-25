@@ -890,70 +890,53 @@ Welcome to InCollege
 Program is exiting!
 '''
 
+# Epic #2 Test
 def test_post_a_job(capsys, monkeypatch):
 
-    inputs = iter(["1", "1", ""])
+    db.clear_jobs_list()
+    
+    # Login --> Search for job --> Post a job --> *Enter job details* --> Return to top-level menu --> Logout --> Exit
+    inputs = iter(["tesla", "toTheMoon1!","1", "1", "Data Analyst", "SQL, programming required", "Tesla", "LA", "70000", "2","4", "5"])
   
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
   
-    state.goto_logged_in_state()
+    # Goes to the logging in state
+    state.goto_logging_in_state()
     stdout, stderr = capsys.readouterr()
     assert stdout == '''
+Login:
 
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+You have successfully logged in.
 
-Welcome to InCollege
---------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Exit
-
-Search for an active InCollege user
--------------------------------------
+Top-level Menu
+--------------
 What do you want to do?
-1. Continue
-2. Return to Start Menu
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
 
-They are a part of the InCollege system.
-
-Join your friends on the InCollege system!
-------------------------------------------
-1. Login
-2. Sign up
-3. Return to Start Menu
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-Welcome to InCollege
---------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Exit
-
-Search for an active InCollege user
--------------------------------------
 What do you want to do?
-1. Continue
-2. Return to Start Menu
 
-They are not yet a part of the InCollege system.
+1. Post a job
+2. Return to previous page
 
-Search for an active InCollege user
--------------------------------------
+Job Posted Successfully!
+
+
 What do you want to do?
-1. Continue
-2. Return to Start Menu
+
+1. Post a job
+2. Return to previous page
+
+
+Top-level Menu
+--------------
+What do you want to do?
+1. Search for an internship/job
+2. Find someone you know
+3. Learn a new skill
+4. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -971,4 +954,3 @@ Welcome to InCollege
 
 Program is exiting!
 '''
-  

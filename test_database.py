@@ -20,6 +20,7 @@ def test_add_user():
     db.add_user_to_db(first_name, last_name, username, password)
     assert db.user_exists_in_db(username, password) == True
 
+
 def test_can_add_more_users():
     db.clear_users_list()
     users_list = db.get_users_list()
@@ -44,3 +45,22 @@ def test_job_exists_in_db():
     job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
 
     assert db.job_exists_in_db("SWE", "Write code", "Startup576", "Silicon Valley", "Enough") == True
+
+def test_job_storage_limit():
+    db.clear_jobs_list()
+    jobs_dictionary = db.get_jobs_dictionary()
+    assert job_post_page.is_database_limit_reached(jobs_dictionary) == False
+
+    # Adds 5 jobs to the database
+    new_job = job_model.JobPostDescription("cool_user", "SWE", "Write code", "Startup576", "Silicon Valley", "Lots!")
+    job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
+    job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
+    
+    job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
+    job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
+    job_post_page.store_job_database(db.get_jobs_dictionary(), new_job)
+
+    # Update the jobs dictionary
+    jobs_dictionary = db.get_jobs_dictionary()   
+  
+    assert job_post_page.is_database_limit_reached(jobs_dictionary) == True
