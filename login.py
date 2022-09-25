@@ -3,9 +3,8 @@
 # database = a Python dictionary
 # Returns true if the username is not already in the JSON file
 # Otherwise, return False
-def username_is_unique(username_input, database):
-  
-  for user in database["users_list"]:
+def username_is_unique(username_input, users_list):
+  for user in users_list:
     if user["username"] == username_input:
       return False
       

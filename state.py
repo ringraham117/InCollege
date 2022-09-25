@@ -27,7 +27,7 @@ def goto_start_menu_state():
         return goto_search_for_user_state()
 
     elif user_input == "5":
-        quit()
+        return goto_exit_state()
 
     else:
         print("Invalid selection. Please try again.")
@@ -104,7 +104,7 @@ def goto_create_new_account_state():
         print("All permitted accounts have been created, please come back later.")        
         return goto_start_menu_state()
 
-    elif not login.username_is_unique(username, db.get_database()):
+    elif not login.username_is_unique(username, db.get_users_list()):
         print("That username is not available.")        
         return goto_start_menu_state()
 
@@ -276,6 +276,9 @@ def goto_learn_excel_state():
     print("\nUnder Construction.")
     return goto_learn_excel_state()
 
+def goto_exit_state():
+    print("\nProgram is exiting!")
+
 def goto_ask_to_join_state():
     menu.print_ask_to_join_menu()
     user_input = input("\nEnter a selection: ")
@@ -292,3 +295,4 @@ def goto_ask_to_join_state():
     else:
         print("Invalid input.")
         return goto_ask_to_join_state()
+
