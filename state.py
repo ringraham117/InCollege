@@ -168,7 +168,7 @@ def goto_search_for_user_state():
 
     if db.name_found_in_db(first_name, last_name):
         print("\nThey are a part of the InCollege system.")
-        return goto_start_menu_state()
+        return goto_ask_to_join_state()
 
     else:
         print("\nThey are not yet a part of the InCollege system.")
@@ -278,3 +278,21 @@ def goto_learn_excel_state():
 
 def goto_exit_state():
     print("\nProgram is exiting!")
+
+def goto_ask_to_join_state():
+    menu.print_ask_to_join_menu()
+    user_input = input("\nEnter a selection: ")
+
+    if user_input == "1":
+        return goto_logging_in_state()
+
+    elif user_input == "2":
+        return goto_create_new_account_state()
+
+    elif user_input == "3":
+        return goto_start_menu_state()
+
+    else:
+        print("Invalid input.")
+        return goto_ask_to_join_state()
+
