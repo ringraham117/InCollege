@@ -38,8 +38,6 @@ def test_can_add_more_users():
 
 def test_job_exists_in_db():
     db.clear_jobs_list()
-    jobs_list = db.get_jobs_list
-
     assert db.job_exists_in_db("SWE", "Write code", "Startup576", "Silicon Valley", "Enough") == False
 
     new_job = job_model.JobPostDescription("cool_user", "SWE", "Write code", "Startup576", "Silicon Valley", "Enough")
