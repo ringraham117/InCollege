@@ -6,7 +6,7 @@
 def username_is_unique(username_input, database):
   
   for user in database["users_list"]:
-    if user["username"] in username_input:
+    if user["username"] == username_input:
       return False
       
   return True
