@@ -22,7 +22,6 @@ def test_add_user():
 
 
 def test_can_add_more_users():
-
     db.clear_users_list()
     users_list = db.get_users_list()
   
