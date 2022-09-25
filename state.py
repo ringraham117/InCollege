@@ -104,7 +104,7 @@ def goto_create_new_account_state():
         print("All permitted accounts have been created, please come back later.")        
         return goto_start_menu_state()
 
-    elif not login.username_is_unique(username, db.get_database()):
+    elif not login.username_is_unique(username, db.get_users_list()):
         print("That username is not available.")        
         return goto_start_menu_state()
 
@@ -277,4 +277,4 @@ def goto_learn_excel_state():
     return goto_learn_excel_state()
 
 def goto_exit_state():
-    print("Program is exiting!")
+    print("\nProgram is exiting!")
