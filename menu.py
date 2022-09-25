@@ -87,3 +87,9 @@ def print_learn_excel_menu():
     print("1. Continue")
     print("2. Return to the Learn a Skill Menu")    
 
+def print_ask_to_join_menu():
+    print("\nJoin your friends on the InCollege system!")
+    print("------------------------------------------")
+    print("1. Login")
+    print("2. Sign up")
+    print("3. Return to Start Menu")
