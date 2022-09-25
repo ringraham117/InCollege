@@ -2,7 +2,7 @@ import login
 import database as db
 
 def test_username_is_unique():
-    db.clear_db()
+    db.clear_users_list()
     assert login.username_is_unique("user1", db.get_users_list()) == True
 
     db.add_user_to_db("Mel", "Gibson", "user1", "password")

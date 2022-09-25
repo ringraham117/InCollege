@@ -35,7 +35,7 @@ def store_job_database(job_database, created_job):
 
 
 def is_database_limit_reached(job_database):
-    return len(job_database["jobs"]) > 5
+    return len(job_database["jobs"]) >= 5
 
 
 def open_database_file():
