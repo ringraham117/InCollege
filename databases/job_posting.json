@@ -1,20 +1,12 @@
 {
   "jobs": [
     {
-      "user": "user5",
-      "title": "Software Engineer",
-      "descriptionage": "C++, python req",
-      "employer": "University of South Florida",
-      "location": "Tampa",
-      "salary": "65000"
-    },
-    {
-      "user": "user5",
-      "title": "Job1",
-      "descriptionage": "Description for Job1",
-      "employer": "Employer for Job1",
-      "location": "Location of Job1",
-      "salary": "Salary of Job1"
+      "user": "cool_user",
+      "title": "SWE",
+      "descriptionage": "Write code",
+      "employer": "Startup576",
+      "location": "Silicon Valley",
+      "salary": "Enough"
     }
   ]
 }

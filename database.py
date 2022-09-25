@@ -43,9 +43,38 @@ def name_found_in_db(first_name, last_name):
   
   return False
 
-def clear_db():
+def clear_users_list():
     database = {"users_list": []}
   
     # Opens the JSON file in write mode
     with open("databases/user_credentials.json", 'w') as data_file:
         json.dump(database, data_file, indent=2)
+
+def clear_jobs_list():
+    empty_jobs_list = {"jobs": []}
+
+    # Opens the JSON file in write mode
+    with open("databases/job_posting.json", 'w') as data_file:
+        json.dump(empty_jobs_list, data_file, indent=2)
+
+def get_jobs_list():
+    with open("databases/job_posting.json") as data_file:
+        database = json.load(data_file)
+        return database["jobs"]
+
+def job_exists_in_db(title, description, employer, location, salary):
+    for job in get_jobs_list():
+      if job["title"] == title \
+      and job["descriptionage"] == description \
+      and job["employer"] == employer \
+      and job["location"] == location \
+      and job["salary"] == salary:
+
+        return True
+
+    return False
+    
+def get_jobs_dictionary():
+  with open("databases/job_posting.json") as data_file:
+        dictionary = json.load(data_file)
+        return dictionary
