@@ -3,6 +3,7 @@ import login
 import menu
 import src.pages.job_search_page as job_search_page
 import src.constants.student_success_story as story
+import src.router.router as router
 
 loggedInUser = ""
 
@@ -27,6 +28,9 @@ def goto_start_menu_state():
         return goto_search_for_user_state()
 
     elif user_input == "5":
+        router.start_routing()
+      
+    elif user_input == "7":
         return goto_exit_state()
 
     else:
@@ -42,8 +46,8 @@ def goto_logging_in_state():
 
     if not db.user_exists_in_db(username, password):
         print("Incorrect username/password, please try again.")
-        return goto_logging_in_state()
-        
+        goto_logging_in_state()
+        return
 
     print("\nYou have successfully logged in.")
     global loggedInUser
@@ -63,10 +67,14 @@ def goto_logged_in_state():
         return goto_find_someone_you_know_state()
 
     elif user_input == "3":
-        return goto_learn_a_skill_state()
-    
+        goto_learn_a_skill_state()
+
     elif user_input == "4":
         return goto_start_menu_state()
+
+    else:
+        print("Invalid selection.")
+        return goto_logged_in_state()
 
 
 def goto_learn_a_skill_state():
@@ -101,38 +109,41 @@ def goto_create_new_account_state():
     password = input("Enter a password: ")
 
     if not db.can_add_more_users():
-        print("All permitted accounts have been created, please come back later.")        
+        print(
+            "All permitted accounts have been created, please come back later."
+        )
         return goto_start_menu_state()
 
     elif not login.username_is_unique(username, db.get_users_list()):
-        print("That username is not available.")        
+        print("That username is not available.")
         return goto_start_menu_state()
 
     elif login.password_is_too_short(password):
-        print("Password is too short.")    
+        print("Password is too short.")
         return goto_start_menu_state()
 
     elif login.password_is_too_long(password):
-        print("Password is too long.")        
+        print("Password is too long.")
         return goto_start_menu_state()
 
     elif not login.password_contains_uppercase_letter(password):
-        print('Password must have at least one uppercase letter.')        
+        print('Password must have at least one uppercase letter.')
         return goto_start_menu_state()
 
     elif not login.password_contains_number(password):
-        print("Password must have at least one numeral.")        
+        print("Password must have at least one numeral.")
         return goto_start_menu_state()
 
     elif not login.password_contains_special_char(password):
-        print("Password must have atleast one special character.")        
+        print("Password must have atleast one special character.")
         return goto_start_menu_state()
 
     db.add_user_to_db(first_name, last_name, username, password)
     print("Account successfully created.")
     goto_start_menu_state()
 
-def goto_watch_video_state():            
+
+def goto_watch_video_state():
     menu.print_video_menu()
     user_input = input("\nEnter a selection: ")
 
@@ -143,19 +154,20 @@ def goto_watch_video_state():
         return goto_start_menu_state()
 
     else:
-        print("Invalid selection.")
+        print("\nInvalid selection.")
         return goto_watch_video_state()
 
     print("Video is now playing.")
     return goto_watch_video_state()
 
-def goto_search_for_user_state():   
+
+def goto_search_for_user_state():
     menu.print_search_for_user_menu()
     user_input = input("\nEnter a selection: ")
 
     if user_input == "1":
         pass
-        
+
     elif user_input == "2":
         return goto_start_menu_state()
 
@@ -174,6 +186,7 @@ def goto_search_for_user_state():
         print("\nThey are not yet a part of the InCollege system.")
         return goto_search_for_user_state()
 
+
 def goto_find_someone_you_know_state():
     menu.print_find_someone_you_know_menu()
     user_input = input("\nEnter a selection: ")
@@ -187,9 +200,10 @@ def goto_find_someone_you_know_state():
     else:
         print("Invalid selection")
         return goto_find_someone_you_know_state()
-    
+
     print("\nUnder Construction.")
     goto_find_someone_you_know_state()
+
 
 def goto_learn_web_dev_state():
     menu.print_learn_web_dev_menu()
@@ -208,6 +222,7 @@ def goto_learn_web_dev_state():
     print("\nUnder Construction.")
     return goto_learn_web_dev_state()
 
+
 def goto_learn_coding_state():
     menu.print_learn_coding_menu()
     user_input = input("\nEnter a selection: ")
@@ -223,7 +238,8 @@ def goto_learn_coding_state():
         return goto_learn_coding_state()
 
     print("\nUnder Construction.")
-    return goto_learn_web_dev_state()
+    return goto_learn_coding_state()
+
 
 def goto_learn_communication_state():
     menu.print_learn_communication_menu()
@@ -242,6 +258,7 @@ def goto_learn_communication_state():
     print("\nUnder Construction.")
     return goto_learn_communication_state()
 
+
 def goto_learn_resume_critique_state():
     menu.print_learn_resume_critique_menu()
     user_input = input("\nEnter a selection: ")
@@ -259,6 +276,7 @@ def goto_learn_resume_critique_state():
     print("\nUnder Construction.")
     return goto_learn_resume_critique_state()
 
+
 def goto_learn_excel_state():
     menu.print_learn_excel_menu()
     user_input = input("\nEnter a selection: ")
@@ -275,6 +293,7 @@ def goto_learn_excel_state():
 
     print("\nUnder Construction.")
     return goto_learn_excel_state()
+
 
 def goto_exit_state():
     print("\nProgram is exiting!")
@@ -295,4 +314,3 @@ def goto_ask_to_join_state():
     else:
         print("Invalid input.")
         return goto_ask_to_join_state()
-

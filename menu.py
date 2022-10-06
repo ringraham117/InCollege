@@ -1,12 +1,13 @@
 def print_start_menu():
-
     print("\nWelcome to InCollege")
     print("--------------------")
     print("1. Login")
     print("2. Sign up")
     print("3. Play video (\"Why Join InCollege?\")")
     print("4. Search for InCollege users")
-    print("5. Exit")
+    print("5. Useful Links")
+    print("6. InCollege Important Links")
+    print("7. Exit")
 
 
 def print_top_level_menu():
@@ -31,12 +32,14 @@ def print_skills_menu():
     print("5. Microsoft Excel")
     print("6. Return to Previous Screen")
 
+
 def print_video_menu():
     print("\nPlay the \"Why Join InCollege?\" video")
     print("----------------------------------------")
     print("What do you want to do?")
     print("1. Continue")
     print("2. Return to Start Menu")
+
 
 def print_search_for_user_menu():
     print("\nSearch for an active InCollege user")
@@ -45,12 +48,14 @@ def print_search_for_user_menu():
     print("1. Continue")
     print("2. Return to Start Menu")
 
+
 def print_find_someone_you_know_menu():
     print("\nFind someone you know")
     print("-----------------------")
     print("What do you want to do?")
     print("1. Continue")
     print("2. Return to Top-level Menu")
+
 
 def print_learn_web_dev_menu():
     print("\nLearn Web Development")
@@ -59,33 +64,38 @@ def print_learn_web_dev_menu():
     print("1. Continue")
     print("2. Return to the Learn a Skill Menu")
 
+
 def print_learn_coding_menu():
     print("\nLearn Coding")
     print("------------")
     print("What do you want to do?")
     print("1. Continue")
-    print("2. Return to the Learn a Skill Menu")    
+    print("2. Return to the Learn a Skill Menu")
+
 
 def print_learn_communication_menu():
     print("\nLearn Communication")
     print("-------------------")
     print("What do you want to do?")
     print("1. Continue")
-    print("2. Return to the Learn a Skill Menu")    
+    print("2. Return to the Learn a Skill Menu")
+
 
 def print_learn_resume_critique_menu():
     print("\nLearn Resume Critique")
     print("---------------------")
     print("What do you want to do?")
     print("1. Continue")
-    print("2. Return to the Learn a Skill Menu")    
+    print("2. Return to the Learn a Skill Menu")
+
 
 def print_learn_excel_menu():
     print("\nLearn Microsoft Excel")
     print("---------------------")
     print("What do you want to do?")
     print("1. Continue")
-    print("2. Return to the Learn a Skill Menu")    
+    print("2. Return to the Learn a Skill Menu")
+
 
 def print_ask_to_join_menu():
     print("\nJoin your friends on the InCollege system!")
