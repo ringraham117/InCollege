@@ -13,11 +13,21 @@ import src.pages.directories_page as directoriesPage
 
 import src.constants.pages as pages
 
-import src.pages.start_page as startPage
+import src.pages.logout_page as logoutPage
 import src.pages.login_page as loginPage
+import src.pages.sign_up_page as signUpPage
+import src.pages.play_video_page as playVideoPage
+import src.pages.search_for_users_page as searchForUsersPage
+import src.pages.important_links_page as importantLinksPage
+import src.pages.exit_page as exitPage
 
+import src.pages.top_level_menu_page as topLevelMenuPage
+import src.pages.job_search_page as jobSearchPage
+import src.pages.find_someone_you_know_page as findSomeoneYouKnowPage
+import src.pages.learn_skills_page as learnSkillsPage
+
+# Maps page names to display_page functions
 routes = {
-  pages.USEFUL_LINKS_PAGE : usefulLinksPage.display_page,
   pages.BROWSE_INCOLLEGE_PAGE : browseInCollegePage.display_page,
   pages.BUSINESS_SOLUTIONS_PAGE : businessSolutionsPage.display_page,
   pages.DIRECTORIES_PAGE : directoriesPage.display_page,
@@ -28,9 +38,20 @@ routes = {
   pages.CAREERS_PAGE : careersPage.display_page,
   pages.BLOG_PAGE : blogPage.display_page,
   pages.ABOUT_PAGE : aboutPage.display_page,
-  pages.START_PAGE : startPage.display_page,
-  pages.LOGIN_PAGE : loginPage.display_page
-  # This part needs refactor from the state object
+  
+  pages.LOGOUT_PAGE : logoutPage.display_page,
+  pages.LOGIN_PAGE : loginPage.display_page,
+  pages.SIGN_UP_PAGE : signUpPage.display_page,
+  pages.PLAY_VIDEO_PAGE : playVideoPage.display_page,
+  pages.SEARCH_FOR_USERS_PAGE : searchForUsersPage.display_page,
+  pages.USEFUL_LINKS_PAGE : usefulLinksPage.display_page,
+  pages.IMPORTANT_LINKS_PAGE : importantLinksPage.display_page,
+  pages.EXIT_PAGE : exitPage.display_page,
+
+  pages.TOP_LEVEL_MENU_PAGE : topLevelMenuPage.display_page,
+  pages.JOB_SEARCH_PAGE : jobSearchPage.display_page,
+  pages.FIND_SOMEONE_YOU_KNOW_PAGE : findSomeoneYouKnowPage.display_page,
+  pages.LEARN_SKILLS_PAGE : learnSkillsPage.display_page,
 }
 
 # Initialize the page history so the app starts on the "Start Page"
@@ -47,8 +68,12 @@ def refresh_display():
 
 # page = Name of a page    
 def navigate_next_page(page):
-  if(page == "Previous Page"):
+  if(page == "Exit"):
+    return
+  
+  elif(page == "Previous Page"):
     navigate_previous_page()
+  
   else:
     page_history.append(routes[page]);
   
