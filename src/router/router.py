@@ -13,11 +13,12 @@ import src.pages.directories_page as directoriesPage
 
 import src.constants.pages as pages
 
-import src.pages.logout_page as logoutPage
+import src.pages.start_page as startPage
 import src.pages.login_page as loginPage
 import src.pages.sign_up_page as signUpPage
 import src.pages.play_video_page as playVideoPage
 import src.pages.search_for_users_page as searchForUsersPage
+import src.pages.ask_to_join_page as askToJoinPage
 import src.pages.important_links_page as importantLinksPage
 import src.pages.exit_page as exitPage
 
@@ -55,6 +56,7 @@ routes = {
 }
 
 # Initialize the page history so the app starts on the "Start Page"
+# page_history is a list of function names
 page_history = [routes[pages.START_PAGE]]
 
 def start_routing():
@@ -63,8 +65,9 @@ def start_routing():
 def initialize_display():
   navigate_next_page()
 
+# Executes the last function in the page_history list
 def refresh_display():
-    page_history[-1]()
+  page_history[-1]()
 
 # page = Name of a page    
 def navigate_next_page(page):
