@@ -1,8 +1,8 @@
 import database as db
 import login
 import menu
-import src.pages.job_search_page as job_search_page
 import src.constants.student_success_story as story
+import src.pages.job_search_page as job_search_page
 import src.router.router as router
 
 loggedInUser = ""
@@ -297,6 +297,7 @@ def goto_learn_excel_state():
 
 def goto_exit_state():
     print("\nProgram is exiting!")
+
 
 def goto_ask_to_join_state():
     menu.print_ask_to_join_menu()
