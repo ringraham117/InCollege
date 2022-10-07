@@ -1,7 +1,7 @@
 from src.constants.student_success_story import STUDENT_SUCCESS_STORY 
 
 import database as db
-import src.pages as pages
+import src.constants.pages as pages
 import src.shared.display_options as displayOptions
 import src.router.router as router
 

@@ -40,7 +40,7 @@ routes = {
   pages.BLOG_PAGE : blogPage.display_page,
   pages.ABOUT_PAGE : aboutPage.display_page,
   
-  pages.LOGOUT_PAGE : logoutPage.display_page,
+  pages.START_PAGE : startPage.display_page,
   pages.LOGIN_PAGE : loginPage.display_page,
   pages.SIGN_UP_PAGE : signUpPage.display_page,
   pages.PLAY_VIDEO_PAGE : playVideoPage.display_page,

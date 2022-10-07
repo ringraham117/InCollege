@@ -10,7 +10,7 @@ BUSINESS_SOLUTIONS_PAGE = "Business Solutions"
 DIRECTORIES_PAGE = "Directories"
 COPYRIGHT_NOTICE_PAGE = "Copyright Notice"
 
-LOGOUT_PAGE = "Log out"
+START_PAGE = "Start Page"
 LOGIN_PAGE = "Login"
 SIGN_UP_PAGE = "Sign Up"
 PLAY_VIDEO_PAGE = "Play video (\"Why Join InCollege?\")"
