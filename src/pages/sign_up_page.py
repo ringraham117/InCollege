@@ -1,11 +1,24 @@
+<<<<<<< HEAD
 import database as db
 import login
 import src.constants.pages as pages
+=======
+from src.constants.student_success_story import STUDENT_SUCCESS_STORY 
+
+import database as db
+import login
+import src.constants.pages as pages
+import src.shared.display_options as displayOptions
+>>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
 import src.router.router as router
 
 
 def display_page():
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
     print("\nCreate a new user:")
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
@@ -29,6 +42,7 @@ def display_page():
 
     elif not login.password_contains_number(password):
         print("Password must have at least one numeral.")
+<<<<<<< HEAD
 
     elif not login.password_contains_special_char(password):
         print("Password must have atleast one special character.")
@@ -38,3 +52,14 @@ def display_page():
         print("Account successfully created.")
 
     router.navigate_next_page(pages.START_PAGE)
+=======
+    
+    elif not login.password_contains_special_char(password):
+        print("Password must have atleast one special character.")
+    
+    else:
+        db.add_user_to_db(first_name, last_name, username, password)
+        print("Account successfully created.")
+    
+    router.navigate_next_page(pages.LOGOUT_PAGE)
+>>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8

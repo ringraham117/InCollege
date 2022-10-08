@@ -4,14 +4,12 @@ import src.router.router as router
 
 
 def display_page():
-  page_description = "Video is now playing."
+  page_description = "\nJoin your friends on the InCollege system!"
   user_selection = displayOptions.display(
     [
-<<<<<<< HEAD
+      pages.LOGIN_PAGE,
+      pages.SIGN_UP_PAGE,
       pages.START_PAGE
-=======
-      pages.LOGOUT_PAGE
->>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
     ],
      
     page_description)
