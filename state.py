@@ -2,6 +2,7 @@ import database as db
 import login
 import menu
 import src.pages.job_search_page as job_search_page
+import src.constants.pages as pages
 import src.constants.student_success_story as story
 import src.router.router as router
 
@@ -28,8 +29,11 @@ def goto_start_menu_state():
         return goto_search_for_user_state()
 
     elif user_input == "5":
-        router.start_routing()
-      
+        router.navigate_next_page(pages.USEFUL_LINKS_PAGE)
+ 
+    elif user_input == "6":
+        router.navigate_next_page(pages.IMPORTANT_LINKS_PAGE)
+
     elif user_input == "7":
         return goto_exit_state()
 

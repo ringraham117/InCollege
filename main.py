@@ -1,3 +1,3 @@
-import src.router.router as router
+import state
 
-router.start_routing()
+state.goto_start_menu_state()

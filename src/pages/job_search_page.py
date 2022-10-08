@@ -1,6 +1,8 @@
 import src.pages.job_post_page as job_post_page
 import state
 
+def display_page():
+    pass
 
 def display_job_search_page():
     print("\nWhat do you want to do?\n")

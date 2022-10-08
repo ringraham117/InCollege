@@ -11,7 +11,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 '''
 
   
