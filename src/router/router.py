@@ -18,11 +18,7 @@ import src.pages.login_page as loginPage
 import src.pages.sign_up_page as signUpPage
 import src.pages.play_video_page as playVideoPage
 import src.pages.search_for_users_page as searchForUsersPage
-<<<<<<< HEAD
-
-=======
 import src.pages.ask_to_join_page as askToJoinPage
->>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
 import src.pages.important_links_page as importantLinksPage
 import src.pages.copyright_notice_page as copyrightNoticePage
 import src.pages.cookie_policy_page as cookiePolicyPage
