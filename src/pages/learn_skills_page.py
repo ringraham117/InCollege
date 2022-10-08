@@ -1,17 +1,20 @@
+
+
 import src.constants.pages as pages
 import src.shared.display_options as displayOptions
 import src.router.router as router
 
 
 def display_page():
-  page_description = "Video is now playing."
+  page_description = ''
   user_selection = displayOptions.display(
     [
-<<<<<<< HEAD
-      pages.START_PAGE
-=======
-      pages.LOGOUT_PAGE
->>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
+      pages.WEB_DEVELOPMENT_PAGE, 
+      pages.CODING_PAGE, 
+      pages.COMMUNICATION_PAGE, 
+      pages.RESUME_CRITIQUE_PAGE, 
+      pages.MICROSOFT_EXCEL_PAGE 
+      
     ],
      
     page_description)

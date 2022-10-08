@@ -18,9 +18,18 @@ import src.pages.login_page as loginPage
 import src.pages.sign_up_page as signUpPage
 import src.pages.play_video_page as playVideoPage
 import src.pages.search_for_users_page as searchForUsersPage
+<<<<<<< HEAD
+
+=======
 import src.pages.ask_to_join_page as askToJoinPage
+>>>>>>> 780721faf639475c43e1bfa8c5d8ebd416e34be8
 import src.pages.important_links_page as importantLinksPage
-import src.pages.exit_page as exitPage
+import src.pages.copyright_notice_page as copyrightNoticePage
+import src.pages.cookie_policy_page as cookiePolicyPage
+import src.pages.privacy_policy_page as privacyPolicyPage
+import src.pages.accessibility_page as accessibilityPage
+import src.pages.user_agreement_page as userAgreementPage
+import src.pages.brand_policy_page as brandPolicyPage
 
 import src.pages.top_level_menu_page as topLevelMenuPage
 import src.pages.job_search_page as jobSearchPage
@@ -46,13 +55,19 @@ routes = {
   pages.PLAY_VIDEO_PAGE : playVideoPage.display_page,
   pages.SEARCH_FOR_USERS_PAGE : searchForUsersPage.display_page,
   pages.USEFUL_LINKS_PAGE : usefulLinksPage.display_page,
+  
   pages.IMPORTANT_LINKS_PAGE : importantLinksPage.display_page,
-  pages.EXIT_PAGE : exitPage.display_page,
-
+  pages.COPYRIGHT_NOTICE_PAGE : copyrightNoticePage.display_page,
+  pages.COOKIE_POLICY_PAGE : cookiePolicyPage.display_page,
+  pages.PRIVACY_POLICY_PAGE : privacyPolicyPage.display_page,
+  pages.ACCESSIBILITY_PAGE : accessibilityPage.display_page,
+  pages.USER_AGREEMENT_PAGE : userAgreementPage.display_page,
+  pages.BRAND_POLICY_PAGE : brandPolicyPage.display_page,
+  
   pages.TOP_LEVEL_MENU_PAGE : topLevelMenuPage.display_page,
-  pages.JOB_SEARCH_PAGE : jobSearchPage.display_page,
-  pages.FIND_SOMEONE_YOU_KNOW_PAGE : findSomeoneYouKnowPage.display_page,
-  pages.LEARN_SKILLS_PAGE : learnSkillsPage.display_page,
+  pages.JOB_SEARCH_PAGE: jobSearchPage.display_page,
+  pages.FIND_SOMEONE_YOU_KNOW_PAGE: findSomeoneYouKnowPage.display_page,
+  pages.LEARN_SKILLS_PAGE: learnSkillsPage.display_page,
 }
 
 # Initialize the page history so the app starts on the "Start Page"

@@ -16,7 +16,14 @@ SIGN_UP_PAGE = "Sign Up"
 PLAY_VIDEO_PAGE = "Play video (\"Why Join InCollege?\")"
 SEARCH_FOR_USERS_PAGE = "Search for InCollege users"
 USEFUL_LINKS_PAGE = "Useful Links"
+
 IMPORTANT_LINKS_PAGE = "InCollege Important Links"
+COOKIE_POLICY_PAGE = "Cookie Policy"
+PRIVACY_POLICY_PAGE = "Privacy Policy"
+ACCESSIBILITY_PAGE = "Accessibility"
+USER_AGREEMENT_PAGE = "User Agreement"
+BRAND_POLICY_PAGE = "Brand Policy"
+
 EXIT_PAGE = "Exit"
 
 TOP_LEVEL_MENU_PAGE = "Top Level Menu"
