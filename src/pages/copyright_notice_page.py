@@ -4,6 +4,6 @@ import src.router.router as router
 
 
 def display_page():
-    copyright_notice = ''
+    copyright_notice = 'The InCollege name and branding are protected under Copyright'
     user_selection = displayOptions.display([], copyright_notice)
     router.navigate_next_page(user_selection)

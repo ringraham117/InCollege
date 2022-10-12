@@ -64,3 +64,25 @@ def test_job_storage_limit():
     jobs_dictionary = db.get_jobs_dictionary()   
   
     assert job_post_page.is_database_limit_reached(jobs_dictionary) == True
+
+# Epic #3 Test
+def test_guest_controls_storage():
+    db.clear_users_list()
+    db.add_user_to_db("Eric", "Forman", "Eric", "password")
+    
+    users_list = db.get_users_list()
+    test_user = users_list[0]
+    
+    assert test_user["sms"] == True 
+    assert test_user["email"] == True
+    assert test_user["targeted_ads"] == True
+
+# Epic #3 Test
+def test_default_language_setting():
+    db.clear_users_list()
+    db.add_user_to_db("Harry", "Potter", "Wizard", "password")
+
+    users_list = db.get_users_list()
+    test_user = users_list[0]
+
+    assert test_user["language"] == "English"

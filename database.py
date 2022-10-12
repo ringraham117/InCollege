@@ -1,5 +1,6 @@
 import json
 import src.models.user_model as user_model
+import state
 
 def get_users_list():
     with open("databases/user_credentials.json") as data_file:
@@ -78,3 +79,39 @@ def get_jobs_dictionary():
   with open("databases/job_posting.json") as data_file:
         dictionary = json.load(data_file)
         return dictionary
+
+def get_guest_controls(username):
+  with open("databases/user_credentials.json") as users_file:
+    dictionary = json.load(users_file)
+    for user in dictionary['users_list']:
+      if (user['username'] == username):
+        return {
+          'sms': user['sms'], 
+          'email': user['email'], 
+          'targeted_ads': user['targeted_ads']
+        }
+
+def write_guest_controls(username, controls):
+    with open("databases/user_credentials.json") as users_file:
+      dictionary = json.load(users_file)
+    for user in dictionary['users_list']:
+      if (user['username'] == username):
+        user['sms'] = controls['sms']
+        user['email'] = controls['email']
+        user['targeted_ads'] = controls['targeted_ads']
+    with open("databases/user_credentials.json", 'w') as user_file:
+      json.dump(dictionary, user_file, indent = 2)
+
+def get_db_as_dictionary():
+  with open("databases/user_credentials.json") as data_file:
+    database = json.load(data_file)
+    return database
+
+def update_users_list(users_list):
+  
+  # Opens the JSON file in write mode
+  with open("databases/user_credentials.json", 'w') as data_file:
+    
+    # Updates the JSON file
+    json.dump(users_list, data_file, indent=2)
+  

@@ -3,7 +3,7 @@ import json
 import state
 import pytest
 
-
+## ALL TEST CASES in this file pass EPIC 3 - test_state.py
 # Note: Use "Ctrl + /" to comment or uncomment multiple lines at one time.
 # -----------------------------------------------------------------------
 
@@ -11,14 +11,16 @@ import pytest
 #so just use a :: to specify the particular test case you want to test
 #-----------------------------------------------------------------------
 
-#THIS ONE PASSED
+
+# Epic #2 Test
+# Tester: Ryan - Epic 3 - Done
 def test_success_story(capsys, monkeypatch):
 
-    inputs = iter(["5"])
+    inputs = iter(["7"])
 
     # Simulate entering those values into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  
+
     #call the function
     state.goto_start_menu_state()
 
@@ -39,13 +41,16 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
 
-# THIS ONE PASSED
+# Epic #1 Test
+# Tester: Ryan - Epic 3 - Done
 def test_incorrect_login(capsys, monkeypatch):
 
     # Clear the database to start from a controlled state
@@ -57,7 +62,7 @@ def test_incorrect_login(capsys, monkeypatch):
     # This sends the inputs in the order that you specify
     # Make a list of values to simulate writing to the terminal
     # Bad login --> Good login --> Logout --> Exit
-    inputs = iter(["wrong", "passwrong", "maverick", "topGun22!", "4", "5"])
+    inputs = iter(["wrong", "passwrong", "maverick", "topGun22!", "6", "7"])
 
     # Simulate entering those values into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
@@ -83,7 +88,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -97,13 +104,16 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
 
-#THIS ONE PASSED
+# Epic #1 Test
+# Tester: Ryan - Epic 3 - Done
 def test_logging_in(capsys, monkeypatch):
 
     # Empties the database
@@ -111,15 +121,14 @@ def test_logging_in(capsys, monkeypatch):
     database = {"users_list": []}
 
     # Writes the empty dictionary to the JSON file
-    with open("users.json", "w") as myFile:
+    with open("databases/user_credentials.json", "w") as myFile:
         json.dump(database, myFile, indent=2)
-
 
     # db.add_user_to_db(user, passw)
     db.add_user_to_db("Brad", "Pitt", "BPitt", "movieStar1!")
 
     # Values simulate writing to the terminal
-    inputs = iter(["BPitt", "movieStar1!", "4", "5"])
+    inputs = iter(["BPitt", "movieStar1!", "6", "7"])
 
     # Simulates entering the "inputs" into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
@@ -141,7 +150,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -155,15 +166,20 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+
+
+# Epic #1 Test
+# Tester: Ryan - Epic 3 - Done
 def test_logged_in(capsys, monkeypatch):
 
-    inputs = iter(["4", "5"])
+    inputs = iter(["6", "7"])
   
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
@@ -177,7 +193,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -191,13 +209,17 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
 
-#THIS ONE PASSED
+
+# Epic #1 Test
+# Tester: Ryan - Epic 3 - Done
 @pytest.mark.parametrize(('user_selection'), ((1), (2), (3), (4), (5)))
 def test_learn_skill(capsys, monkeypatch, user_selection):
     monkeypatch.setattr('builtins.input', lambda _: user_selection)
@@ -216,19 +238,21 @@ What skill do you want to learn?
 6. Return to Previous Screen
 '''
 
-#THIS ONE PASSED
+
+# Epic #1 Test
+# Tester: Ryan - Epic 3 - Done
 def test_create_account(capsys, monkeypatch):
 
     # Defines an empty dictionary with the correct format
     database = {"users_list": []}
 
     # Writes the empty dictionary to the JSON file
-    with open("users.json", "w") as myFile:
+    with open("databases/user_credentials.json", "w") as myFile:
         json.dump(database, myFile, indent=2)
 
 
     inputs = iter(
-        ["Kim", "Kardashian", "kimK", "fakeBody1!", "1", "kimK", "fakeBody1!", "4", "5"])
+        ["Kim", "Kardashian", "kimK", "fakeBody1!", "1", "kimK", "fakeBody1!", "6", "7"])
   
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
@@ -252,7 +276,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Login:
 
@@ -264,7 +290,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -278,15 +306,17 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+# Epic #2 Test
 # test back option for web development -skill 1
 def test_goto_learn_web_dev_state(capsys, monkeypatch):
-    inputs = iter(["2", "6", "4", "5"])
+    inputs = iter(["2", "6", "6", "7"])
   
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
     
@@ -315,7 +345,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -329,20 +361,25 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''  
-#THIS ONE PASSED
+
+
+### Tester:Namira - PASSED EPIC 3 TEST
+# Epic #2 Test
 #test for learn coding back option - skill 2
 def test_goto_learn_coding_state(capsys, monkeypatch):
-  inputs= iter(["2","6","4","5"])
-      
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    inputs = iter(["2", "6", "6", "7"])
 
-  state.goto_learn_coding_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+    state.goto_learn_coding_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Learn Coding
 ------------
 What do you want to do?
@@ -365,7 +402,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -379,21 +418,24 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-# THIS ONE PASSED
+
+# Epic #2 Test
 #tests back option for commmunication skill - skill 3
 def test_goto_learn_communication_state(capsys, monkeypatch):
-  inputs = iter(["2","6","4","5"])
-  
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    inputs = iter(["2", "6", "6", "7"])
 
-  state.goto_learn_communication_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+    state.goto_learn_communication_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Learn Communication
 -------------------
 What do you want to do?
@@ -416,7 +458,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -430,21 +474,26 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
-'''
-  
-#THIS ONE PASSED
+'''    
+
+
+
+# Epic #2 Test
 #tests back option for resume critique - skill 4
+## Tester : Namira - Epic 3 - PASSED
 def test_goto_learn_resume_critique_state(capsys, monkeypatch):
-  inputs = iter(["2","6","4","5"])
-    
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  
-  state.goto_learn_resume_critique_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    inputs = iter(["2", "6", "6", "7"])
+
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+    state.goto_learn_resume_critique_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Learn Resume Critique
 ---------------------
 What do you want to do?
@@ -467,7 +516,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -481,20 +532,24 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+
+
+# Epic #2 Test
 # tests back option for learn microsoft excel - skill 5
 def test_goto_learn_excel_state(capsys, monkeypatch):
-  inputs = iter(["2","6","4","5"])
-    
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  state.goto_learn_excel_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    inputs = iter(["2", "6", "6", "7"])
+
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    state.goto_learn_excel_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Learn Microsoft Excel
 ---------------------
 What do you want to do?
@@ -517,7 +572,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -531,19 +588,24 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
-''' 
-  
-#THIS ONE PASSED
+'''
+
+
+
+# Epic #2 Test
 #tests display of inCollege video
-#tests back option in watch video state 
+#tests back option in watch video state
+## Tester: Namira - passed epic 3
 def test_goto_watch_video_state(capsys, monkeypatch):
 
     # This sends the inputs in the order that you specify
     # Make a list of values to simulate writing to the terminal
-    inputs = iter(["3", "1", "2", "5"])
+    inputs = iter(["3", "1", "2", "7"])
 
     # Simulate entering those values into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
@@ -565,7 +627,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Play the "Why Join InCollege?" video
 ----------------------------------------
@@ -592,19 +656,22 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
-  
-#THIS ONE PASSED
+
+
+# Epic #2 Test
 #tests back option for find people you may know
-def test_goto_find_someone_you_know_state(capsys, monkeypatch): 
-  inputs = iter(["2","4","5"])
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  state.goto_find_someone_you_know_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+def test_goto_find_someone_you_know_state(capsys, monkeypatch):
+    inputs = iter(["2", "6", "7"])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    state.goto_find_someone_you_know_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Find someone you know
 -----------------------
 What do you want to do?
@@ -617,7 +684,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -631,19 +700,22 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
-#tests back option for search menu 
+# Epic #2 Test
+## Tester: Namira - PASSED EPIC 3 TEST
+#tests back option for search menu
 def test_goto_search_for_user_state(capsys, monkeypatch):
-  inputs = iter(["2","5"])
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  state.goto_search_for_user_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    inputs = iter(["2", "7"])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    state.goto_search_for_user_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Search for an active InCollege user
 -------------------------------------
 What do you want to do?
@@ -662,18 +734,22 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
-#THIS ONE PASSED
+
+# Epic #2 Test
 #tests back option for learn a new skill
+## Tester: Namira - PASSED EPIC 3 TEST
 def test_goto_learn_a_skill_state(capsys, monkeypatch):
-  inputs = iter(["6","4", "5"])
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  state.goto_learn_a_skill_state()
-  stdout, stderr = capsys.readouterr()
-  assert stdout == '''
+    inputs = iter(["6", "6", "7"])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    state.goto_learn_a_skill_state()
+    stdout, stderr = capsys.readouterr()
+    assert stdout == '''
 Learn a Skill Menu
 ------------------
 What skill do you want to learn?
@@ -690,7 +766,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -704,19 +782,23 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+
+# Epic #2 Test
 #tests back option in top-level menu
-def test_top_level_back(capsys,monkeypatch):
-    inputs = iter(["4","5"])
-  
+## Tester: Namira - PASSED EPIC 3 TEST
+def test_top_level_back(capsys, monkeypatch):
+    inputs = iter(["6", "7"])
+
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-#   menu.print_top_level_menu()
+    #   menu.print_top_level_menu()
     state.goto_logged_in_state()
     stdout, stderr = capsys.readouterr()
     assert stdout == '''
@@ -726,7 +808,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -740,16 +824,20 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+
+## Tester: Namira - PASSED EPIC 3 TEST
+# Epic #2 Test
 #tests back option in find a job
 def test_findJob_back(capsys, monkeypatch):
-    inputs = iter(["1","2","4","5"])
-  
+    inputs = iter(["1", "2", "6", "7"])
+
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
     state.goto_logged_in_state()
@@ -761,7 +849,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 What do you want to do?
 
@@ -775,7 +865,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -789,16 +881,20 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
-#THIS ONE PASSED
+
+# Epic #2 Test
+## Tester: Namira - PASSED EPIC 3 TEST
 #tests the search option of the start menu
 #tests the back option of the search
 #if user is found, prompt user to login/signup
-def test_search(capsys,monkeypatch):
+def test_search(capsys, monkeypatch):
     # Empties the database
     # Defines an empty dictionary with the correct format
     database = {"users_list": []}
@@ -807,13 +903,13 @@ def test_search(capsys,monkeypatch):
     with open("databases/user_credentials.json", "w") as myFile:
         json.dump(database, myFile, indent=2)
 
-
     db.add_user_to_db("Elon", "Musk", "tesla", "toTheMoon1!")
-  
-    inputs = iter(["4","1", "Elon", "Musk","3","4","1", "not", "insystem", "2", "5"])
-  
+
+    inputs = iter(
+        ["4", "1", "Elon", "Musk", "3", "4", "1", "not", "insystem", "2", "7"])
+
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  
+
     state.goto_start_menu_state()
     stdout, stderr = capsys.readouterr()
     assert stdout == '''
@@ -829,7 +925,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Search for an active InCollege user
 -------------------------------------
@@ -857,7 +955,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Search for an active InCollege user
 -------------------------------------
@@ -885,21 +985,28 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
 
+
 # Epic #2 Test
+## Tester: Namira - passed EPIC 3 TEST
 def test_post_a_job(capsys, monkeypatch):
 
     db.clear_jobs_list()
-    
+
     # Login --> Search for job --> Post a job --> *Enter job details* --> Return to top-level menu --> Logout --> Exit
-    inputs = iter(["tesla", "toTheMoon1!","1", "1", "Data Analyst", "SQL, programming required", "Tesla", "LA", "70000", "2","4", "5"])
-  
+    inputs = iter([
+        "tesla", "toTheMoon1!", "1", "1", "Data Analyst",
+        "SQL, programming required", "Tesla", "LA", "70000", "2", "6", "7"
+    ])
+
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-  
+
     # Goes to the logging in state
     state.goto_logging_in_state()
     stdout, stderr = capsys.readouterr()
@@ -914,7 +1021,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 What do you want to do?
 
@@ -936,7 +1045,9 @@ What do you want to do?
 1. Search for an internship/job
 2. Find someone you know
 3. Learn a new skill
-4. Log out
+4. Useful Links
+5. InCollege Important Links
+6. Log out
 
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
@@ -950,7 +1061,9 @@ Welcome to InCollege
 2. Sign up
 3. Play video ("Why Join InCollege?")
 4. Search for InCollege users
-5. Exit
+5. Useful Links
+6. InCollege Important Links
+7. Exit
 
 Program is exiting!
 '''
