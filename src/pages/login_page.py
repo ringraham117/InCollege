@@ -5,6 +5,7 @@ import src.constants.pages as pages
 import src.shared.display_options as displayOptions
 import src.router.router as router
 
+import state
 
 def display_page():
    
@@ -24,6 +25,5 @@ def display_page():
 
 
     print("\nYou have successfully logged in.")
-    global loggedInUser
-    loggedInUser = username
+    state.loggedInUser = username
     router.navigate_next_page(pages.TOP_LEVEL_MENU_PAGE)

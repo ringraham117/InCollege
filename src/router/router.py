@@ -22,10 +22,13 @@ import src.pages.ask_to_join_page as askToJoinPage
 import src.pages.important_links_page as importantLinksPage
 import src.pages.copyright_notice_page as copyrightNoticePage
 import src.pages.cookie_policy_page as cookiePolicyPage
+import src.pages.copyright_policy_page as copyrightPolicyPage
 import src.pages.privacy_policy_page as privacyPolicyPage
 import src.pages.accessibility_page as accessibilityPage
 import src.pages.user_agreement_page as userAgreementPage
 import src.pages.brand_policy_page as brandPolicyPage
+import src.pages.guest_controls_page as guestControlsPage
+import src.pages.languages_page as languagesPage
 
 import src.pages.top_level_menu_page as topLevelMenuPage
 import src.pages.job_search_page as jobSearchPage
@@ -55,10 +58,13 @@ routes = {
   pages.IMPORTANT_LINKS_PAGE : importantLinksPage.display_page,
   pages.COPYRIGHT_NOTICE_PAGE : copyrightNoticePage.display_page,
   pages.COOKIE_POLICY_PAGE : cookiePolicyPage.display_page,
+  pages.COPYRIGHT_POLICY_PAGE: copyrightPolicyPage.display_page,
   pages.PRIVACY_POLICY_PAGE : privacyPolicyPage.display_page,
   pages.ACCESSIBILITY_PAGE : accessibilityPage.display_page,
   pages.USER_AGREEMENT_PAGE : userAgreementPage.display_page,
   pages.BRAND_POLICY_PAGE : brandPolicyPage.display_page,
+  pages.GUEST_CONTROLS_PAGE: guestControlsPage.display_page,
+  pages.LANGUAGES_PAGE : languagesPage.display_page,
   
   pages.TOP_LEVEL_MENU_PAGE : topLevelMenuPage.display_page,
   pages.JOB_SEARCH_PAGE: jobSearchPage.display_page,

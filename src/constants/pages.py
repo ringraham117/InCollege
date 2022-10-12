@@ -19,10 +19,13 @@ USEFUL_LINKS_PAGE = "Useful Links"
 
 IMPORTANT_LINKS_PAGE = "InCollege Important Links"
 COOKIE_POLICY_PAGE = "Cookie Policy"
+COPYRIGHT_POLICY_PAGE = "Copyright Policy"
 PRIVACY_POLICY_PAGE = "Privacy Policy"
 ACCESSIBILITY_PAGE = "Accessibility"
 USER_AGREEMENT_PAGE = "User Agreement"
+GUEST_CONTROLS_PAGE = "Guest Controls"
 BRAND_POLICY_PAGE = "Brand Policy"
+LANGUAGES_PAGE = "Language Settings"
 
 EXIT_PAGE = "Exit"
 

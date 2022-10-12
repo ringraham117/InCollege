@@ -75,6 +75,15 @@ def goto_logged_in_state():
         goto_learn_a_skill_state()
 
     elif user_input == "4":
+        router.navigate_next_page(pages.USEFUL_LINKS_PAGE)
+
+    elif user_input == "5":
+        router.navigate_next_page(pages.IMPORTANT_LINKS_PAGE)
+
+    elif user_input == "6":
+        # Resets the logged in user
+        global loggedInUser
+        loggedInUser = ""
         return goto_start_menu_state()
 
     else:

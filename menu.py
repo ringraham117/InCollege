@@ -17,7 +17,9 @@ def print_top_level_menu():
     print("1. Search for an internship/job")
     print("2. Find someone you know")
     print("3. Learn a new skill")
-    print("4. Log out")
+    print("4. Useful Links")
+    print("5. InCollege Important Links")
+    print("6. Log out")
 
 
 # Prints skills for the user to select

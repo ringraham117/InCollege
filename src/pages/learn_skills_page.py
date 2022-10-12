@@ -1,5 +1,3 @@
-
-
 import src.constants.pages as pages
 import src.shared.display_options as displayOptions
 import src.router.router as router

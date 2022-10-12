@@ -1,6 +1,4 @@
 def display(options, page_description = ""):
-  print("\033[H\033[J", end="")
-
   print(page_description + "\n")
   
   page_options = format_page_options(options)

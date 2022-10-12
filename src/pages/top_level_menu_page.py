@@ -10,6 +10,8 @@ def display_page():
       pages.JOB_SEARCH_PAGE, 
       pages.FIND_SOMEONE_YOU_KNOW_PAGE, 
       pages.LEARN_SKILLS_PAGE, 
+      pages.USEFUL_LINKS_PAGE,
+      pages.IMPORTANT_LINKS_PAGE,
       pages.START_PAGE, 
     ], 
     page_description)
