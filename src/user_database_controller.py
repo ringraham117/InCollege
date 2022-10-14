@@ -1,6 +1,18 @@
 import json
 import src.models.user_model as user_model
-import state
+import src.state as state
+
+def get_database():
+  with open("databases/user_credentials.json") as data_file:
+      database = json.load(data_file)
+      return database
+
+def get_user_by_username(username):
+  database = get_database()
+
+  for user in database["users_list"]:
+    if user["username"] == username:
+      return user
 
 def get_users_list():
     with open("databases/user_credentials.json") as data_file:
@@ -25,8 +37,10 @@ def user_exists_in_db(username, password):
 
 
 def add_user_to_db(first_name, last_name, username, password):
-  with open("databases/user_credentials.json") as data_file:
-      database = json.load(data_file)
+  #with open("databases/user_credentials.json") as data_file:
+      #database = json.load(data_file)
+
+  database = get_database()
 
   new_user = user_model.User(first_name, last_name, username, password)
 

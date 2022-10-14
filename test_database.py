@@ -1,4 +1,4 @@
-import database as db
+import user_database_controller as db
 import src.models.job_model as job_model
 import src.pages.job_post_page as job_post_page
 
