@@ -1,3 +1,3 @@
-import state
+import src.state as state
 
-state.goto_start_menu_state()
+state.show_start_menu_page()

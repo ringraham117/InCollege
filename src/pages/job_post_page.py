@@ -1,8 +1,7 @@
 import json
-import state
 import src.models.job_model as job_model
 import src.pages.job_search_page as job_search_page
-
+import src.state as state
 
 def display_job_post_page():
     job_database = open_database_file()
@@ -24,18 +23,18 @@ def get_job_data_from_user():
     employer = input("Enter employer: ")
     location = input("Enter location: ")
     salary = input("Enter salary: ")
-    return job_model.JobPostDescription(user, title, description, employer,
+    return job_model.Job(user, title, description, employer,
                                         location, salary)
 
 
 def store_job_database(job_database, created_job):
-    job_database["jobs"].append(created_job.__dict__)
-    with open("databases/job_posting.json", "w") as myFile:
+    job_database["jobs_list"].append(created_job.__dict__)
+    with open("databases/jobs.json", "w") as myFile:
         json.dump(job_database, myFile, indent=2)
 
 
 def is_database_limit_reached(job_database):
-    return len(job_database["jobs"]) >= 5
+    return len(job_database["jobs_list"]) >= 5
 
 
 def open_database_file():
