@@ -1,3 +1,12 @@
+def generate_menu(options_list):
+    counter = 1
+    
+    for option in options_list:
+        print(str(counter) + " - " + option)
+        counter = counter + 1
+
+    print("0 - Previous Page")
+
 def print_ask_to_join_menu():
     print("\nJoin your friends on the InCollege system!")
     print("------------------------------------------")
@@ -13,6 +22,7 @@ def print_find_someone_you_know_menu():
     print("2 - Return to Top-level Menu")
 
 def print_general_useful_links_menu():
+    print()
     print("1 - Sign Up")
     print("2 - Help Center")
     print("3 - About")
@@ -94,10 +104,11 @@ def print_skills_menu():
     print("6 - Return to Previous Screen")
 
 def print_start_menu():
-    print("\nWelcome to InCollege")
+    print()
+    print("Welcome to InCollege")
     print("--------------------")
     print("1 - Login")
-    print("2 - Sign up")
+    print("2 - Sign Up")
     print("3 - Play video (\"Why Join InCollege?\")")
     print("4 - Search for InCollege users")
     print("5 - Useful Links")
@@ -116,10 +127,12 @@ def print_top_level_menu():
     print("6 - Log out")
 
 def print_useful_links_menu():
+    print()
     print("1 - General")
     print("2 - Browse InCollege")
     print("3 - Business Solutions")
     print("4 - Directories")
+    print("0 - Previous Page")
 
 def print_video_menu():
     print("\nPlay the \"Why Join InCollege?\" video")

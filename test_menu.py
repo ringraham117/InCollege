@@ -1,4 +1,4 @@
-import menu
+import src.menu as menu
 
 
 def test_start_menu(capsys):
@@ -7,13 +7,13 @@ def test_start_menu(capsys):
     assert stdout == '''
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
+1 - Login
+2 - Sign up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 '''
 
   
@@ -24,10 +24,12 @@ def test_print_top_level_menu(capsys):
 Top-level Menu
 --------------
 What do you want to do?
-1. Search for an internship/job
-2. Find someone you know
-3. Learn a new skill
-4. Log out
+1 - Search for an internship/job
+2 - Find someone you know
+3 - Learn a new skill
+4 - Useful Links
+5 - InCollege Important Links
+6 - Log out
 '''
 
 def test_print_skills_menu(capsys):
@@ -37,12 +39,12 @@ def test_print_skills_menu(capsys):
 Learn a Skill Menu
 ------------------
 What skill do you want to learn?
-1. Web Development
-2. Coding
-3. Communication
-4. Resume Critique
-5. Microsoft Excel
-6. Return to Previous Screen
+1 - Web Development
+2 - Coding
+3 - Communication
+4 - Resume Critique
+5 - Microsoft Excel
+6 - Return to Previous Screen
 '''
 def test_print_video_menu(capsys):
   menu.print_video_menu()
@@ -51,8 +53,8 @@ def test_print_video_menu(capsys):
 Play the "Why Join InCollege?" video
 ----------------------------------------
 What do you want to do?
-1. Continue
-2. Return to Start Menu
+1 - Continue
+2 - Return to Start Menu
 '''
 def test_print_search_for_user_menu(capsys):
   menu.print_search_for_user_menu()
@@ -61,8 +63,8 @@ def test_print_search_for_user_menu(capsys):
 Search for an active InCollege user
 -------------------------------------
 What do you want to do?
-1. Continue
-2. Return to Start Menu
+1 - Continue
+2 - Return to Start Menu
 '''
   
 def test_print_find_someone_you_know_menu(capsys):
@@ -72,8 +74,8 @@ def test_print_find_someone_you_know_menu(capsys):
 Find someone you know
 -----------------------
 What do you want to do?
-1. Continue
-2. Return to Top-level Menu
+1 - Continue
+2 - Return to Top-level Menu
 '''
 
 def test_print_learn_web_dev_menu(capsys):
@@ -83,8 +85,8 @@ def test_print_learn_web_dev_menu(capsys):
 Learn Web Development
 ---------------------
 What do you want to do?
-1. Continue
-2. Return to the Learn a Skill Menu
+1 - Continue
+2 - Return to the Learn a Skill Menu
 '''
 
 def test_print_learn_coding_menu(capsys):
@@ -94,8 +96,8 @@ def test_print_learn_coding_menu(capsys):
 Learn Coding
 ------------
 What do you want to do?
-1. Continue
-2. Return to the Learn a Skill Menu
+1 - Continue
+2 - Return to the Learn a Skill Menu
 '''
 
 def test_print_learn_communication_menu(capsys):
@@ -105,8 +107,8 @@ def test_print_learn_communication_menu(capsys):
 Learn Communication
 -------------------
 What do you want to do?
-1. Continue
-2. Return to the Learn a Skill Menu
+1 - Continue
+2 - Return to the Learn a Skill Menu
 '''
 def test_print_learn_resume_critique_menu(capsys):
   menu.print_learn_resume_critique_menu()
@@ -115,8 +117,8 @@ def test_print_learn_resume_critique_menu(capsys):
 Learn Resume Critique
 ---------------------
 What do you want to do?
-1. Continue
-2. Return to the Learn a Skill Menu
+1 - Continue
+2 - Return to the Learn a Skill Menu
 '''
   
 def test_print_learn_excel_menu(capsys):
@@ -126,6 +128,6 @@ def test_print_learn_excel_menu(capsys):
 Learn Microsoft Excel
 ---------------------
 What do you want to do?
-1. Continue
-2. Return to the Learn a Skill Menu
+1 - Continue
+2 - Return to the Learn a Skill Menu
 '''

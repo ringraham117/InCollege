@@ -1,19 +1,26 @@
 import src.constants.pages as pages
 
-page_history = [pages.START_PAGE]
+page_history = []
 
-def go_next_page(page):
+def add_page(page):
     page_history.append(page)
 
-def go_previous_page():
-    if (len(page_history) > 1):
-        page_history.pop()
+def remove_current_page():
+    page_history.pop()
 
 def previous_page_is_home_page():
-    return page_history[-2] == pages.HOME_PAGE
+    if page_history[-1] == pages.HOME_PAGE:
+        return True
+    
+    else:
+        return False
 
 def previous_page_is_start_page():
-    return page_history[-2] == pages.START_PAGE
+    if page_history[-1] == pages.START_PAGE:
+        return True
+
+    else:
+        return False
 
 
 

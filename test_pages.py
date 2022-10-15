@@ -1,5 +1,174 @@
-import user_database_controller as db
-import state
+import src.user_database_controller as user_db
+import src.state as state
+
+
+#EPIC - 3 TEST
+def test_about_page(capsys, monkeypatch):
+  inputs = iter(["5", "1", "3", "0", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
+
+  #Read what was printed to the terminal
+  stdout, stderr = capsys.readouterr()
+
+  #assert output
+  assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+In College: Welcome to In College, the world's largest college student network with many users in many countries and territories worldwide.
+
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+Program is exiting!
+'''
+
+#EPIC - 3 TEST
+def test_blog_page(capsys, monkeypatch):
+  inputs = iter(["5", "1", "5", "0", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
+
+  #Read what was printed to the terminal
+  stdout, stderr = capsys.readouterr()
+
+  #assert output
+  assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+Under construction!
+
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+Program is exiting!
+'''
 
 #EPIC - 3 TEST
 def test_browse_incollege(capsys, monkeypatch):
@@ -9,8 +178,8 @@ def test_browse_incollege(capsys, monkeypatch):
     # Simulate entering those values into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-    #call the function
-    state.goto_start_menu_state()
+    # Start the app
+    state.show_start_menu_page()
 
     #Read what was printed to the terminal
     stdout, stderr = capsys.readouterr()
@@ -25,24 +194,23 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
 3 - Business Solutions
 4 - Directories
 0 - Previous Page
+
 Under construction!
 
 0 - Previous Page
-
 
 1 - General
 2 - Browse InCollege
@@ -56,6 +224,8 @@ Through its extensive resume critique program and professional interview tips I 
 This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
+Welcome to InCollege
+--------------------
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -63,7 +233,8 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
-0 - Previous Page
+
+Program is exiting!
 '''
 
 #EPIC - 3 TEST
@@ -73,8 +244,8 @@ def test_business_solutions_page(capsys, monkeypatch):
   # Simulate entering those values into the terminal
   monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-  #call the function
-  state.goto_start_menu_state()
+  # Start the app
+  state.show_start_menu_page()
 
   #Read what was printed to the terminal
   stdout, stderr = capsys.readouterr()
@@ -89,14 +260,13 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
@@ -106,7 +276,6 @@ Welcome to InCollege
 Under construction!
 
 0 - Previous Page
-
 
 1 - General
 2 - Browse InCollege
@@ -120,6 +289,8 @@ Through its extensive resume critique program and professional interview tips I 
 This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
+Welcome to InCollege
+--------------------
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -127,19 +298,271 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
+
+Program is exiting!
+'''
+
+# #EPIC - 3 TEST
+def test_careers_page(capsys, monkeypatch):
+  inputs = iter(["5", "1", "6", "0", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
+
+  #Read what was printed to the terminal
+  stdout, stderr = capsys.readouterr()
+
+  #assert output
+  assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
 0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+Under construction!
+
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+Program is exiting!
+'''
+
+#EPIC - 3 TEST
+def test_copyright_notice_page(capsys, monkeypatch):
+  inputs = iter(["6", "1", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
+
+  #Read what was printed to the terminal
+  stdout, stderr = capsys.readouterr()
+
+  #assert output
+  assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+In College Pressroom: Stay on top of the latest news, updates, and reports
+
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+Program is exiting!
+'''
+
+#EPIC - 3 TEST
+def test_developers_page(capsys, monkeypatch):
+  inputs = iter(["5", "1", "7", "0", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
+
+  #Read what was printed to the terminal
+  stdout, stderr = capsys.readouterr()
+
+  #assert output
+  assert stdout == '''
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+Under construction!
+
+0 - Previous Page
+
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+1 - General
+2 - Browse InCollege
+3 - Business Solutions
+4 - Directories
+0 - Previous Page
+
+
+I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
+Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
+This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
+
+Welcome to InCollege
+--------------------
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
+
+Program is exiting!
 '''
 
 #EPIC - 3 TEST
 def test_directories_page(capsys, monkeypatch):
   inputs = iter(["5", "4", "0", "0", "7"])
 
-
   # Simulate entering those values into the terminal
   monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-  #call the function
-  state.goto_start_menu_state()
+  # Start the app
+  state.show_start_menu_page()
 
   #Read what was printed to the terminal
   stdout, stderr = capsys.readouterr()
@@ -154,14 +577,13 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
@@ -172,44 +594,12 @@ Under construction!
 
 0 - Previous Page
 
-
 1 - General
 2 - Browse InCollege
 3 - Business Solutions
 4 - Directories
 0 - Previous Page
 
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-1 - Login
-2 - Sign Up
-3 - Play video ("Why Join InCollege?")
-4 - Search for InCollege users
-5 - Useful Links
-6 - InCollege Important Links
-7 - Exit
-0 - Previous Page
-'''
-
-#EPIC - 3 TEST
-def test_developers_page(capsys, monkeypatch):
-  inputs = iter(["5", "1", "6", "0", "0", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  #call the function
-  state.goto_start_menu_state()
-
-  #Read what was printed to the terminal
-  stdout, stderr = capsys.readouterr()
-
-  #assert output
-  assert stdout == '''
 
 I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
 Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
@@ -218,57 +608,6 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-Under construction!
-
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -276,270 +615,19 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
-0 - Previous Page
-'''
 
-#EPIC - 3 TEST
-def test_blog_page(capsys, monkeypatch):
-  inputs = iter(["5", "1", "4", "0", "0", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  #call the function
-  state.goto_start_menu_state()
-
-  #Read what was printed to the terminal
-  stdout, stderr = capsys.readouterr()
-
-  #assert output
-  assert stdout == '''
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-Welcome to InCollege
---------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-Under construction!
-
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-1 - Login
-2 - Sign Up
-3 - Play video ("Why Join InCollege?")
-4 - Search for InCollege users
-5 - Useful Links
-6 - InCollege Important Links
-7 - Exit
-0 - Previous Page
-'''
-
-# #EPIC - 3 TEST
-def test_careers_page(capsys, monkeypatch):
-  inputs = iter(["5", "1", "5", "0", "0", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  #call the function
-  state.goto_start_menu_state()
-
-  #Read what was printed to the terminal
-  stdout, stderr = capsys.readouterr()
-
-  #assert output
-  assert stdout == '''
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-Welcome to InCollege
---------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-Under construction!
-
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-1 - Login
-2 - Sign Up
-3 - Play video ("Why Join InCollege?")
-4 - Search for InCollege users
-5 - Useful Links
-6 - InCollege Important Links
-7 - Exit
-0 - Previous Page
+Program is exiting!
 '''
 
 #EPIC - 3 TEST
 def test_help_center_page(capsys, monkeypatch):
-  inputs = iter(["5", "1", "7", "0", "0", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  #call the function
-  state.goto_start_menu_state()
-
-  #Read what was printed to the terminal
-  stdout, stderr = capsys.readouterr()
-
-  #assert output
-  assert stdout == '''
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-Welcome to InCollege
---------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-We are here to help!
-
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-
-
-1 - General
-2 - Browse InCollege
-3 - Business Solutions
-4 - Directories
-0 - Previous Page
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
-1 - Login
-2 - Sign Up
-3 - Play video ("Why Join InCollege?")
-4 - Search for InCollege users
-5 - Useful Links
-6 - InCollege Important Links
-7 - Exit
-0 - Previous Page
-'''
-
-#EPIC - 3 TEST
-def test_about_page(capsys, monkeypatch):
   inputs = iter(["5", "1", "2", "0", "0", "0", "7"])
 
   # Simulate entering those values into the terminal
   monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-  #call the function
-  state.goto_start_menu_state()
+  # Start the app
+  state.show_start_menu_page()
 
   #Read what was printed to the terminal
   stdout, stderr = capsys.readouterr()
@@ -554,14 +642,13 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
@@ -569,29 +656,27 @@ Welcome to InCollege
 4 - Directories
 0 - Previous Page
 
+1 - Sign Up
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
+0 - Previous Page
+
+We are here to help!
+
+0 - Previous Page
 
 1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
 0 - Previous Page
-In College: Welcome to In College, the world's largest college student network with many users in many countries and territories worldwide.
-
-0 - Previous Page
-
-
-1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
-0 - Previous Page
-
 
 1 - General
 2 - Browse InCollege
@@ -605,6 +690,8 @@ Through its extensive resume critique program and professional interview tips I 
 This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
+Welcome to InCollege
+--------------------
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -612,18 +699,48 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
-0 - Previous Page
+
+Program is exiting!
 '''
 
-#EPIC - 3 TEST
-def test_press_page(capsys, monkeypatch):
-  inputs = iter(["5", "1", "3", "0", "0", "0", "7"])
+# EPIC 3 - Test
+def test_language_settings(monkeypatch):
+  
+  # Clear the users list
+  user_db.clear_users_list()
+
+  # Add in a new user
+  user_db.add_user_to_db("Tom", "Brady", "Tom", "password")
+  users_list = user_db.get_users_list()
+  test_user = users_list[0]
+
+  # Check that the language setting is English
+  assert test_user["language"] == "English"
+
+  # Update the language setting to Spanish
+  # List out inputs to simulate
+  inputs = iter(["1", "Tom", "password", "5", "10", "2", "0", "6", "7"])
 
   # Simulate entering those values into the terminal
   monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-  #call the function
-  state.goto_start_menu_state()
+  # Start the app
+  state.show_start_menu_page()
+
+  # Check that the language setting is Spanish
+  users_list = user_db.get_users_list()
+  test_user = users_list[0]
+  assert test_user["language"] == "Spanish"
+
+#EPIC - 3 TEST
+def test_press_page(capsys, monkeypatch):
+  inputs = iter(["5", "1", "4", "0", "0", "0", "7"])
+
+  # Simulate entering those values into the terminal
+  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+  # Start the app
+  state.show_start_menu_page()
 
   #Read what was printed to the terminal
   stdout, stderr = capsys.readouterr()
@@ -638,14 +755,13 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
@@ -653,29 +769,27 @@ Welcome to InCollege
 4 - Directories
 0 - Previous Page
 
-
 1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
 0 - Previous Page
+
 In College Pressroom: Stay on top of the latest news, updates, and reports
 
 0 - Previous Page
 
-
 1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
 0 - Previous Page
-
 
 1 - General
 2 - Browse InCollege
@@ -689,6 +803,8 @@ Through its extensive resume critique program and professional interview tips I 
 This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
+Welcome to InCollege
+--------------------
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -696,20 +812,22 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
-0 - Previous Page
+
+Program is exiting!
 '''
 
 # EPIC 3 - Test
 def test_useful_links_general_sign_up(capsys, monkeypatch):
     
-    db.clear_users_list()
+    user_db.clear_users_list()
     
     inputs = iter(["5", "1", "1", "first", "last", "user1", "Password1!", "7"])
 
     # Simulate entering those values into the terminal
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
-    state.goto_start_menu_state()
+    # Start the app
+    state.show_start_menu_page()
 
     #Read what was printed to the terminal
     stdout, stderr = capsys.readouterr()
@@ -724,14 +842,13 @@ This summer I received an internship offer from one of the leading tech companie
 
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
+1 - Login
+2 - Sign Up
+3 - Play video ("Why Join InCollege?")
+4 - Search for InCollege users
+5 - Useful Links
+6 - InCollege Important Links
+7 - Exit
 
 1 - General
 2 - Browse InCollege
@@ -739,14 +856,13 @@ Welcome to InCollege
 4 - Directories
 0 - Previous Page
 
-
 1 - Sign Up
-2 - About
-3 - Press
-4 - Blog
-5 - Careers
-6 - Developer
-7 - Help Center
+2 - Help Center
+3 - About
+4 - Press
+5 - Blog
+6 - Careers
+7 - Developers
 0 - Previous Page
 
 Create a new user:
@@ -758,111 +874,8 @@ Through its extensive resume critique program and professional interview tips I 
 This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
 
-1 - Login
-2 - Sign Up
-3 - Play video ("Why Join InCollege?")
-4 - Search for InCollege users
-5 - Useful Links
-6 - InCollege Important Links
-7 - Exit
-0 - Previous Page
-'''
-
-# EPIC 3 - Test
-def test_language_settings(monkeypatch):
-  
-  # Clear the users list
-  db.clear_users_list()
-
-  # Add in a new user
-  db.add_user_to_db("Tom", "Brady", "Tom", "password")
-  users_list = db.get_users_list()
-  test_user = users_list[0]
-
-  # Check that the language setting is English
-  assert test_user["language"] == "English"
-
-  # Update the language setting to Spanish
-  # List out inputs to simulate
-  inputs = iter(["1", "Tom", "password", "5", "10", "2", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  # Go to the start menu state to start the program
-  state.goto_start_menu_state()
-
-  # Check that the language setting is Spanish
-  users_list = db.get_users_list()
-  test_user = users_list[0]
-  assert test_user["language"] == "Spanish"
-
-#EPIC - 3 TEST
-def test_copyright_notice_page(capsys, monkeypatch):
-  inputs = iter(["6", "1", "0", "0", "7"])
-
-  # Simulate entering those values into the terminal
-  monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-  #call the function
-  state.goto_start_menu_state()
-
-  #Read what was printed to the terminal
-  stdout, stderr = capsys.readouterr()
-
-  #assert output
-  assert stdout == '''
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
 Welcome to InCollege
 --------------------
-1. Login
-2. Sign up
-3. Play video ("Why Join InCollege?")
-4. Search for InCollege users
-5. Useful Links
-6. InCollege Important Links
-7. Exit
-
-
-1 - Copyright Notice
-2 - About
-3 - Accessibility
-4 - User Agreement
-5 - Privacy Policy
-6 - Cookie Policy
-7 - Copyright Policy
-8 - Brand Policy
-9 - Guest Controls
-10 - Language Settings
-0 - Previous Page
-The InCollege name and branding are protected under Copyright
-
-0 - Previous Page
-
-
-1 - Copyright Notice
-2 - About
-3 - Accessibility
-4 - User Agreement
-5 - Privacy Policy
-6 - Cookie Policy
-7 - Copyright Policy
-8 - Brand Policy
-9 - Guest Controls
-10 - Language Settings
-0 - Previous Page
-
-
-I found value in the InCollege app, it helped me prepare for job interviews through its skills learning program.
-Through its extensive resume critique program and professional interview tips I was able to apply for multiple SDE roles this year.
-This summer I received an internship offer from one of the leading tech companies xylophone, I am happy to share my experience 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t- Mark Zuckerberg
-
 1 - Login
 2 - Sign Up
 3 - Play video ("Why Join InCollege?")
@@ -870,7 +883,8 @@ This summer I received an internship offer from one of the leading tech companie
 5 - Useful Links
 6 - InCollege Important Links
 7 - Exit
-0 - Previous Page
+
+Program is exiting!
 '''
 
 # EPIC 3 - Test
