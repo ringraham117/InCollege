@@ -1,6 +1,5 @@
 import json
 import src.models.user_model as user_model
-import state
 
 def get_users_list():
     with open("databases/user_credentials.json") as data_file:
