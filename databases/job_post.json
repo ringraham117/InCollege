@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "user": "Marvelous user",
+      "title": "CTO",
+      "descriptionage": "ACCELERATE INNOVATION",
+      "employer": "META",
+      "location": "SAN FRANCISCO",
+      "salary": "$$$"
+    },
+    {
+      "user": "jeffG",
+      "title": "Robotics Programmer",
+      "descriptionage": "program and troubleshoot",
+      "employer": "Fineline Robotics",
+      "location": "traveling",
+      "salary": "150000"
+    }
+  ]
+}

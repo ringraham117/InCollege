@@ -1,3 +1,4 @@
-import state
+import src.routing.router as router
+import src.constants.screen_names as screenNames
 
-state.goto_start_menu_state()
+router.navigate_user(screenNames.STARTUP_SCREEN)
