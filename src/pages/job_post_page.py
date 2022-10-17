@@ -3,6 +3,8 @@ import state
 import src.models.job_model as job_model
 import src.pages.job_search_page as job_search_page
 
+def display_page():
+  pass
 
 def display_job_post_page():
     job_database = open_database_file()

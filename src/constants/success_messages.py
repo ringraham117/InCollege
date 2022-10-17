@@ -1,0 +1,8 @@
+SUCCESSFUL_LOGIN_MESSAGE = "You have successfully logged in"
+SUCCESSFUL_JOB_POSTING = "Job Posted Successfully"
+ACCOUNT_CREATION_SUCCESSFUL = "Your account was created successfully!"
+USER_FOUND_SUCCESSFUL = "They are a part of the InCollege system"
+LANGUAGE_CHANGE_SUCCESS_MESSAGE = "Language changed successfully"
+SMS_CHANGE_SUCCESS_MESSAGE = "SMS notifications changed successfully"
+EMAIL_CHANGE_SUCCESS_MESSAGE = "Email notifications changed successfully"
+AD_CHANGE_SUCCESS_MESSAGE = "Ads changed successfully"

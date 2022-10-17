@@ -1,10 +1,10 @@
+import console_writer
 import database as db
 import login
 import menu
 import src.pages.job_search_page as job_search_page
 import src.constants.pages as pages
 import src.constants.student_success_story as story
-import src.pages.job_search_page as job_search_page
 import src.router.router as router
 
 loggedInUser = ""
@@ -31,7 +31,7 @@ def goto_start_menu_state():
 
     elif user_input == "5":
         router.navigate_next_page(pages.USEFUL_LINKS_PAGE)
- 
+
     elif user_input == "6":
         router.navigate_next_page(pages.IMPORTANT_LINKS_PAGE)
 
@@ -114,11 +114,28 @@ def goto_learn_a_skill_state():
         return goto_logged_in_state()
 
 
+def get_user_info():
+    pass
+    #retuen user info
+
+
+def create_account(first_name):
+    pass
+    #create a oject
+
+
+def store_the_user(object):
+    #//  send and api request to database
+    pass
+pass
+
 def goto_create_new_account_state():
 
     print("\nCreate a new user:")
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
+    university = input("Enter university: ")
+    major = input("Enter major: ")
     username = input("Enter a username: ")
     password = input("Enter a password: ")
 
@@ -152,7 +169,8 @@ def goto_create_new_account_state():
         print("Password must have atleast one special character.")
         return goto_start_menu_state()
 
-    db.add_user_to_db(first_name, last_name, username, password)
+    db.add_user_to_db(first_name, last_name, university, major, username,
+                      password)
     print("Account successfully created.")
     goto_start_menu_state()
 
@@ -215,8 +233,37 @@ def goto_find_someone_you_know_state():
         print("Invalid selection")
         return goto_find_someone_you_know_state()
 
-    print("\nUnder Construction.")
-    goto_find_someone_you_know_state()
+    menu.print_find_someone_you_know_menu()
+    select = input("\nEnter a selection: ")
+    
+    if select == "1":
+        last_name = input("\nEnter their last name: ")
+        if db.last_name_found_in_db(last_name):
+            users_list = db.get_users_by_last_name()
+            console_writer.print_users(users_list)
+            print("\nUsers who match your search: ")
+            #display users who have last name
+            #
+            #return db.list_matches(last_name, "0", "0")
+            #return send_friend_request()
+
+    if select == "2":
+        university = input("\nEnter their university: ")
+        if db.univ_found_in_db(university):
+            print("\nUsers who match your search: ")
+            #display users who have university
+            return db.list_matches("0", university, "0")
+
+    if select == "3":
+        major = input("\nEnter their major: ")
+        if db.major_found_in_db(major):
+            print("\nUsers who match your search: ")
+            #display users who have major
+            return db.list_matches("0", "0", major)
+
+    else:
+        print("incorrect input")
+        return goto_find_someone_you_know_state()
 
 
 def goto_learn_web_dev_state():
@@ -329,3 +376,11 @@ def goto_ask_to_join_state():
     else:
         print("Invalid input.")
         return goto_ask_to_join_state()
+
+def goto_send_friend_request_state(users_list):
+    console_writer.print_users(users_list)
+
+    print("Send a friend request:")
+    username = input("Enter the username")
+
+    db.get_user_id(username)
