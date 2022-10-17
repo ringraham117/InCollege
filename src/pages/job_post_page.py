@@ -1,24 +1,10 @@
-import src.constants.pages as pages
 import json
-import src.router.router as router
+import state
 import src.models.job_model as job_model
 import src.pages.job_search_page as job_search_page
 
-
-
 def display_page():
-    job_database = open_database_file()
-
-    if is_database_limit_reached(job_database):
-        print("\nUnable to add more jobs, database limit exceeded")
-    else:
-        created_job = get_job_data_from_user()
-        store_job_database(job_database, created_job)
-        print("Job Posted Successfully!\n")
-
-    # Go back to the previous page to not add excessive pages to the page history
-    router.navigate_next_page("Previous Page")
-
+  pass
 
 def display_job_post_page():
     job_database = open_database_file()

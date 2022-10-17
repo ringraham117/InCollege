@@ -1,3 +1,10 @@
+def print_find_someone_you_know_menu():
+    print()
+    print("Search options:")
+    print("1.Search by last name")
+    print("2.Search by university")
+    print("3.Search by major")
+
 def print_start_menu():
     print("\nWelcome to InCollege")
     print("--------------------")

@@ -1,4 +1,4 @@
-class JobPostDescription:
+class Job:
 
     def __init__(self, user, title, description, employer, location, salary):
         self.user = user

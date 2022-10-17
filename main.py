@@ -1,3 +1,4 @@
-import src.router.router as router
+import src.routing.router as router
+import src.constants.screen_names as screenNames
 
-router.start_routing()
+router.navigate_user(screenNames.STARTUP_SCREEN)
