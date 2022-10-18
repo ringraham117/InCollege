@@ -10,7 +10,7 @@ import src.models.user_model as userModel
 screen_options = [
   screenNames.JOB_SEARCH_SCREEN, screenNames.LEARN_NEW_SKILL_SCREEN,
   screenNames.INCOLLEGE_IMPORTANT_LINKS_SCREEN,
-  screenNames.USEFUL_LINKS_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN,
+  screenNames.USEFUL_LINKS_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN, screenNames.CREATE_PROFILE_SCREEN,
   "Sign Out"
 ]
 

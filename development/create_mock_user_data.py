@@ -106,11 +106,7 @@ def get_mock_user_data():
 
 
 def get_mock_unique_id_data():
-<<<<<<< HEAD
-  return {"unique_id": 8}
-=======
   return {"id": 8}
->>>>>>> cd0ecb177e0a260ee6cc0d43f8e32eaae926613d
 
 
 def update_user_credentials_object():

@@ -9,21 +9,12 @@
       "salary": "$$$"
     },
     {
-<<<<<<< HEAD
-      "user": "test",
-      "title": "CEO",
-      "descriptionage": "the best",
-      "employer": "the best",
-      "location": "the best",
-      "salary": "1000000000"
-=======
       "user": "jeffG",
       "title": "Robotics Programmer",
       "descriptionage": "program and troubleshoot",
       "employer": "Fineline Robotics",
       "location": "traveling",
       "salary": "150000"
->>>>>>> cd0ecb177e0a260ee6cc0d43f8e32eaae926613d
     }
   ]
 }
