@@ -1,84 +1,50 @@
-#
-#
-###THIS CODE WAS COPIED FROM SIGNUP_SCREEN:NEEDS TO BE EDITED FOR CREATING A PROFILE
-#
-#
-#
+import src.authentication.auth as auth
 import src.routing.router as router
 import src.constants.screen_names as screenNames
 import src.shared.screen_display_handler as displayHandler
 import src.constants.error_messages as errorMessages
 import src.shared.notification_handler as notificationHandler
-import src.models.user_model as userModel
-import src.authentication.auth as auth
-import src.shared.password_validator as passwordValidator
-import src.constants.success_messages as successMessage
-import src.services.user_controller as userController
-import src.services.unique_id_controller as uniqueIdController
+import src.models.user_profile_model as profileModel
+import src.services.profile_controller as profileController
+
+screen_options = ["Create Profile"]
 
 
 def screen():
-    screen_display = ""
-    screen_options = get_screen_options()
+  screen_display = "Create/View Your Profile"
+  user_selection = displayHandler.display_controller(screen_options,
+                                                     screen_display)
+  handle_user_selection(user_selection)
 
-    if auth.logged_in_user == None:
-        screen_display = "Welcome to signup screen, select from the options below!"
-    else:
-        screen_display = "You are already signed in!"
-
-    user_selection = displayHandler.display_controller(screen_options,
-                                                       screen_display)
-    handle_user_selection(user_selection)
-
-
-def handle_signup():
-    user = get_user_signup_data()
-    if passwordValidator.is_password_valid(user.password):
-        userController.add_user(user)
-    else:
-        notificationHandler.display_notification(
-            errorMessages.WEAK_PASSWORD_MESSAGE)
-
-    screen()
 
 def handle_user_selection(user_selection):
-    if (screen_exists(user_selection)):
-        navigate_user(user_selection)
-    elif user_selection == "Sign Up":
-        handle_signup()
-    else:
-        notificationHandler.display_notification(
-            errorMessages.INVALID_SELECTION_MESSAGE)
-        screen()
-
-
-def get_user_signup_data():
-    unique_id = uniqueIdController.generate_unique_id()
-    username = input("Username: ")
-    password = input("Password: ")
-    first_name = input("First Name: ")
-    last_name = input("Last Name: ")
-    university = input("University: ")
-    major = input("Major: ")
-    return userModel.User(unique_id=unique_id,
-                          username=username,
-                          password=password,
-                          first_name=first_name,
-                          last_name=last_name,
-                          university=university,
-                          major=major)
+  if (screen_exists(user_selection)):
+    navigate_user(user_selection)
+  elif user_selection in screen_options:
+    if user_selection == "Create Profile":
+      profile = get_user_profile_data()
+      profileController.add_profile(profile)
+  else:
+    notificationHandler.display_notification(
+      errorMessages.INVALID_SELECTION_MESSAGE)
+  screen()
 
 
 def navigate_user(screen):
-    router.navigate_user(screen)
+  router.navigate_user(screen)
 
 
 def screen_exists(user_selection):
-    return user_selection in screenNames.screens
+  return user_selection in screenNames.screens
 
 
-def get_screen_options():
-    screen_options = []
-    if auth.logged_in_user == None:
-        screen_options.append("Sign Up")
-    return screen_options
+def get_user_profile_data():
+  user = auth.logged_in_user['username']
+  title = input("\nEnter education title: ")
+  major = auth.logged_in_user['major']
+  university = auth.logged_in_user['university']
+  about = input("\nTell your friends about yourself: ")
+  experience = input("\nWhat experience do you have?: ")
+  education = input("\nEnter Education:")
+  
+  return profileModel.profile(user, title, major, university, about, experience, education)
