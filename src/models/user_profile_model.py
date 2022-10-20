@@ -1,5 +1,5 @@
 class Profile:
-
+    
     def __init__(self, user, title, major, university, about, experience, education):
         self.user = user
         self.title = title
