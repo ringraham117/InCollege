@@ -43,8 +43,8 @@ def screen_exists(user_selection):
 def get_user_job_data():
   user = auth.logged_in_user['username']
   title = input("\nEnter job title: ")
-  description = input("Enter job description: ")
-  employer = input("Enter employer: ")
-  location = input("Enter location: ")
-  salary = input("Enter salary: ")
+  description = input("\nEnter job description: ")
+  employer = input("\nEnter employer: ")
+  location = input("\nEnter location: ")
+  salary = input("\nEnter salary: ")
   return jobModel.Job(user, title, description, employer, location, salary)

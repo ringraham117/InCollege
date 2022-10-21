@@ -30,6 +30,7 @@ def update_database_object(updated_database):
 
 
 def add_user(user):
+
   if (is_database_limit_reached()):
     notificationHandler.display_notification(
       errorMessages.USER_DATABASE_LIMIT_MESSAGE)
@@ -206,3 +207,59 @@ def get_user_by_first_last_name(first_name, last_name):
     if user["first_name"] == first_name and user["last_name"] == last_name:
       return user
   return None
+
+
+def set_user_title(username, title):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["title"] = title
+  update_database_object(database)
+
+
+def set_user_about(username, about):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["about"] = about
+  update_database_object(database)
+
+
+def set_user_experience(username, experience):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["experience"] = experience
+  update_database_object(database)
+
+
+def set_user_education(username, education):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["education"] = education
+  update_database_object(database)
+
+
+def set_has_profile(username, has_profile):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["has_profile"] = has_profile
+  update_database_object(database)
+
+
+def set_user_major(username, major):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["major"] = major
+  update_database_object(database)
+
+
+def set_user_university(username, university):
+  database = get_database_object()
+  for user in database["users"]:
+    if user["username"] == username:
+      user["university"] = university
+  update_database_object(database)

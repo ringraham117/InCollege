@@ -1,3 +1,6 @@
+# Assumptions
+1. All screen names should be unique!
+
 # Folder structure
 1. Services - To Make network requests or control databases
 2. Shared - Contains all the folders that is required functionality by multiple files (Avoid code duplication)
@@ -11,3 +14,10 @@
 
 # Run Tests
 1. In the root directory, run the command 'pytest -v test.py'
+
+
+
+# Todo
+ -1 or more lines about their education
+
+

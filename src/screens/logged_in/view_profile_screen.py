@@ -7,7 +7,7 @@ import src.shared.notification_handler as notificationHandler
 import src.services.user_controller as userController
 
 
-##MAY NEED TO PUT MORE SCREEN OPTIONS 
+##MAY NOT BE USED 
 screen_options = []
 
 def screen():
