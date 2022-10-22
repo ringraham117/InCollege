@@ -225,19 +225,21 @@ def set_user_about(username, about):
   update_database_object(database)
 
 
-def set_user_experience(username, experience):
+# def set_user_experience(username, experience):
+#   database = get_database_object()
+#   for user in database["users"]:
+#     if user["username"] == username:
+#       user["experience"] = experience
+#   update_database_object(database)
+
+
+def set_user_education(username, school, degree, years):
   database = get_database_object()
   for user in database["users"]:
     if user["username"] == username:
-      user["experience"] = experience
-  update_database_object(database)
-
-
-def set_user_education(username, education):
-  database = get_database_object()
-  for user in database["users"]:
-    if user["username"] == username:
-      user["education"] = education
+      user["school"] = school
+      user["degree"] = degree
+      user["years"] = years
   update_database_object(database)
 
 
@@ -257,9 +259,41 @@ def set_user_major(username, major):
   update_database_object(database)
 
 
+def set_past_job_title(username, job_index, title):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["job_title"] = title
+
+  update_database_object(database)
+
+
 def set_user_university(username, university):
   database = get_database_object()
   for user in database["users"]:
     if user["username"] == username:
       user["university"] = university
   update_database_object(database)
+
+
+# def set school name - incomplete
+
+# def set_user_school_name(username, school_name):
+#   database = get_database_object()
+#   for user in database["users"]:
+#     if user["username"] == username:
+#       user["school_name"] = school_name
+#   update_database_object(database)
+
+#def set_user_school_degree
+
+# def set_user_school_degree(username, school_degree):
+#   database = get_database_object()
+#   for user in database["users"]:
+#     if user["username"] == username:
+#       user["school_degree"] = school_degree
+#   update_database_object(database)

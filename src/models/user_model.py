@@ -1,3 +1,5 @@
+import src.models.job_model as jobModel
+
 class User:
 
   def __init__(self,
@@ -10,8 +12,10 @@ class User:
                major="",
                has_profile=False,
                title="",
-               about="",
-               experience="",
+               about="",            
+               school="",
+               degree="",
+               years="",
                education="",
                language="English",
                sms_notifications=True,
@@ -33,12 +37,14 @@ class User:
     self.university = university
     self.major = major
     self.about = about
-    self.experience = experience
-    self.education = education
-    self.profile = {
-      "experience": [
-        {},
-        {},
-        {}
-      ]
-    }
+    self.profile =  ""
+    self.experience = [
+      {},
+      {},
+      {}
+    ]
+     
+
+    
+  
+

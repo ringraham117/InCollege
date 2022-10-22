@@ -21,6 +21,8 @@ def display_screen_options(screen_options, previousScreen):
     print(option, "-", formated_screen_options[option])
 
   user_selection = input("\nPlease select from the provided options: ")
+  
+  # Returns the value of the key/value pair in the formatted screen options dictionary (a string)
   return formated_screen_options.get(user_selection)
 
 

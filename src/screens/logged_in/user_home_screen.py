@@ -54,7 +54,7 @@ def handle_friend_requests():
       user_selection = input(user['first_name'] +
                              " Wants to be your friend! Accept request y/n: ")
       if user_selection == 'y':
-        # Add both he send and reciever to each others friend list
+        # Add both the send and reciever to each others friend list
         userController.add_user_to_friends(user_id, request_id)
         userController.add_user_to_friends(request_id, user_id)
         userController.delete_user_friend_request(user_id, request_id)

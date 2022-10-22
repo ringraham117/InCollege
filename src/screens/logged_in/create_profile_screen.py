@@ -4,7 +4,6 @@ import src.constants.screen_names as screenNames
 import src.shared.screen_display_handler as displayHandler
 import src.constants.error_messages as errorMessages
 import src.shared.notification_handler as notificationHandler
-import src.models.user_model as userModel
 import src.services.user_controller as userController
 import src.shared.format_input_first_upper as formatToFirstUpper
 
@@ -22,8 +21,8 @@ def screen():
     else:
       screen_display = "This is the profile of " + user[
         'first_name'] + " " + user['last_name'] + "!\n" + get_profile_display(
-          user['title'], user['university'], user['major'], user['experience'],
-          user['about'], user['education'])
+          user['title'], user['university'], user['major'],
+          user['about'], user['school'], user['degree'], user['years'])
       for option in get_edit_profile_options():
         screen_options.append(option)
 
@@ -39,8 +38,9 @@ def handle_user_selection(user_selection):
     navigate_user(user_selection)
 
   elif user_selection == "Create User Profile":
-    title, about, experience, education = get_user_profile_data()
-    set_user_profile_data(username, title, about, experience, education, True)
+    title, about, experience, school, degree, years = get_user_profile_data()
+    set_user_profile_data(username, title, about, experience, school, degree,
+                          years, True)
 
   elif user_selection == "Edit Title":
     title = input("\nEnter title: ")
@@ -57,48 +57,23 @@ def handle_user_selection(user_selection):
 
   elif user_selection == "Edit Experience":
 
-    # Experience section (Each job needs a unique ID) (Could be as simple as 1, 2, 3)
-
-    # Provide the user with a list of jobs to edit (Include the title of the job instead of just "Job 1")
-    # Issue: This menu is not cleared before showing the next screen
-    # Potential solution: Transform the menu into its own screen so that it works more smoothly with the display handler (User input would be read in on the new screen)
-    # Alternative solution: Define the menu here and just call the "clear screen" function here (Downside: There would not be a built-in "previous screen" option)
-
-    # Goal: Include a message at the top of the screen to indicate which job is being edited
-      # Potential solution: Include one screen for choosing a job and then another screen for editing job details
-
-    print("0. Job 1")
-    print("1. Job 2")
-    print("2. Job 3")
-
-    # Allow the user to select a job
-    job_selection = input("Select a job: ")
-
-    # Converts from string to int
-    job_index = int(job_selection)
-
-    # Get a reference to the selected job from the database
-    # Assume "experience" is a list a jobs (indexed starting from 0)
-    selected_job = auth.logged_in_user["profile"]["experience"][job_index]
-
-    # Allow the user edit attributes of that job (could be a new screen)
-    # Go to a new screen to edit the job (Upside: Automatically clears the screen and has built-in "previous option") (Downside: You'd have to pass the selected job to the new screen)
-    # Alternative: Print menus here and then handle user input in a different function
-    navigate_user(screenNames.EDIT_JOB_SCREEN)
-
-    experience = input("\nEdit Experience: ")
-    userController.set_user_experience(username, experience)
+    # Go to to the "edit experience" screen
+    navigate_user(screenNames.EDIT_EXPERIENCE_SCREEN)
 
   elif user_selection == "Edit Education":
     navigate_user(screenNames.EDIT_EDUCATION_SCREEN)
 
-    education = input("\nEnter Education: ")
-    userController.set_user_education(username, education)
+    print("\nEdit Education: ")
+    school = input("\n\t\tEnter school: ")
+    degree = input("\n\t\tEnter degree: ")
+    years = input("\n\t\tEnter years: ")
+    userController.set_user_education(username, school, degree, years)
 
   else:
     notificationHandler.display_notification(
       errorMessages.INVALID_SELECTION_MESSAGE)
 
+  # What does this function do?
   auth.update_logged_in_user()
   screen()
 
@@ -111,27 +86,41 @@ def screen_exists(user_selection):
   return user_selection in screenNames.screens
 
 
+def get_user_education():
+  print("\nEnter your education")
+  school = input("\n\t\tEnter school: ")
+  degree = input("\n\t\tEnter degree: ")
+  years = input("\n\t\tEnter years: ")
+
+  return school, degree, years
+
+
 def get_user_profile_data():
   title = input("\nEnter title: ")
   about = input("\nEnter About: ")
-  experience = input("\nEnter experience: ")
-  education = input("\nEnter education:")
+  experience = "TESTING"
+  #experience = input("\nEnter experience: ")
+  #education = input("\nEnter education:")
+  print("\nEnter your education")
+  school = input("\n\t\tEnter school: ")
+  degree = input("\n\t\tEnter degree: ")
+  years = input("\n\t\tEnter years: ")
 
-  return title, about, experience, education
+  return title, about, experience, school, degree, years
 
 
-def set_user_profile_data(username, title, about, experience, education,
-                          has_profile):
+def set_user_profile_data(username, title, about, experience, school, degree,
+                          years, has_profile):
   userController.set_user_title(username, title)
   userController.set_user_about(username, about)
-  userController.set_user_experience(username, experience)
-  userController.set_user_education(username, education)
+  #userController.set_user_experience(username, experience)
+  userController.set_user_education(username, school, degree, years)
   userController.set_has_profile(username, has_profile)
 
 
-def get_profile_display(title, university, major, about, experience,
-                        education):
-  return "\nTitle: " + title + "\nUniversity: " + university + "\nMajor: " + major + "\nAbout: " + about + "\nExperience: " + experience + "\nEducation: " + education
+def get_profile_display(title, university, major, about, school,
+                        degree, years):
+  return "\nTitle: " + title + "\nUniversity: " + university + "\nMajor: " + major + "\nAbout: " + about + "\nExperience: " + "TESTING" + "\nEducation: " + school + ", " + degree + ", " + years
 
 
 def get_edit_profile_options():
@@ -139,12 +128,3 @@ def get_edit_profile_options():
     "Edit Title", "Edit Major", "Edit About", "Edit Experience",
     "Edit Education"
   ]
-
-
-# user1.profile.title = "abc"
-# user1["profile"]["title"] = "abc"
-# user1: {
-#   profile: {
-#    title: "abc"
-#  }
-# }

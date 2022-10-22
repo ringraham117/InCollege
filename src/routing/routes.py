@@ -1,6 +1,8 @@
 import src.constants.screen_names as screenNames
 
+
 import src.screens.logged_in.edit_education_screen as editEducationScreen
+import src.screens.logged_in.edit_experience_screen as editExperienceScreen
 import src.screens.logged_in.edit_job_screen as editJobScreen
 import src.screens.startup_screen as startupScreen
 import src.screens.login_screen as loginScreen
@@ -50,6 +52,7 @@ import src.screens.logged_in.pending_friend_requests_screen as pendingrequestsSc
 # Key: ScreenName Str  Value: Screenfunction of every screen
 screen_functions = {
   screenNames.EDIT_EDUCATION_SCREEN: editEducationScreen.screen,
+  screenNames.EDIT_EXPERIENCE_SCREEN: editExperienceScreen.screen,
   screenNames.EDIT_JOB_SCREEN: editJobScreen.screen,
   screenNames.STARTUP_SCREEN: startupScreen.screen,
   screenNames.LOGIN_SCREEN: loginScreen.screen,

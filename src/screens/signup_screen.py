@@ -11,6 +11,9 @@ import src.services.user_controller as userController
 import src.services.unique_id_controller as uniqueIdController
 import src.shared.format_input_first_upper as formatToFirstUpper
 
+import src.models.job_model as jobModel
+
+
 def screen():
   screen_display = ""
   screen_options = get_screen_options()

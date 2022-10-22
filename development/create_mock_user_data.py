@@ -20,8 +20,12 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about": "",
-      "experience": "",
-      "education": ""
+      "education": "",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "sasuke",
       "unique_id": "2",
@@ -34,14 +38,18 @@ def get_mock_user_data():
       "ad_notifications": True,
       "friends": ['1'],
       "friend_requests": [],
-      "has_profile": True,
+      "has_profile": False,
       "title": "Comp sci student",
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
       " I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "None",
-      "education": "Community College"
+      "education": "Community College",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "sakura",
       "unique_id": "3",
@@ -59,9 +67,13 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
-      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "Internship",
-      "education": "High School"
+      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
+      "education": "High School",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "kakashi",
       "unique_id": "4",
@@ -79,9 +91,13 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
-      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "Internship",
-      "education": "High School"
+      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
+      "education": "High School",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "shikamaru",
       "unique_id": "5",
@@ -99,9 +115,13 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
-      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "Internship",
-      "education": "High School"
+      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
+      "education": "High School",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "hinata",
       "unique_id": "6",
@@ -119,9 +139,13 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
-      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "Internship",
-      "education": "High School"
+      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
+      "education": "High School",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }, {
       "username": "lee",
       "unique_id": "7",
@@ -139,9 +163,13 @@ def get_mock_user_data():
       "university": "University of South Florida",
       "major": "Computer Science",
       "about":
-      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
-      "experience": "Internship",
-      "education": "High School"
+      "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",    
+      "education": "High School",
+      "experience": [
+        {},
+        {},
+        {}
+      ]
     }]
   }
 
