@@ -1,11 +1,12 @@
 import src.authentication.auth as auth
-import src.routing.router as router
 import src.constants.screen_names as screenNames
-import src.shared.screen_display_handler as displayHandler
 import src.constants.error_messages as errorMessages
-import src.shared.notification_handler as notificationHandler
+import src.routing.router as router
 import src.services.user_controller as userController
+import src.shared.console_writer as consoleWriter
 import src.shared.format_input_first_upper as formatToFirstUpper
+import src.shared.notification_handler as notificationHandler
+import src.shared.screen_display_handler as displayHandler
 
 
 def screen():
@@ -95,25 +96,104 @@ def get_user_education():
   return school, degree, years
 
 
+def read_past_job_details():
+    
+  job_title = input("\n\t\t\tEnter job title: ")
+  job_employer = input("\n\t\t\tEnter employer: ")
+  job_start_date = input("\n\t\t\tEnter start date: ")
+  job_end_date = input("\n\t\t\tEnter end date: ")
+  job_location = input("\n\t\t\tEnter location: ")
+  job_description = input("\n\t\t\tEnter description: ")
+  
+  return (job_title, job_employer, job_start_date, job_end_date, job_location, job_description)
+  
+
 def get_user_profile_data():
+
+  about = ""
+  degree = ""
+  job = ""
+  school= ""
+  title = ""
+  years = ""
+  
+  # Prompt the user 
   title = input("\nEnter title: ")
+  
+  # Save and exit option
+  consoleWriter.print_continue_profile_creation_menu()
+  if not user_selects_to_continue_profile_creation():
+    return title, about, job, school, degree, years
+  
+  # Prompt the user 
   about = input("\nEnter About: ")
-  experience = "TESTING"
-  #experience = input("\nEnter experience: ")
-  #education = input("\nEnter education:")
+  
+  # Save and exit option
+  consoleWriter.print_continue_profile_creation_menu()
+  if not user_selects_to_continue_profile_creation():
+    return title, about, job, school, degree, years
+  
+  # Prompt the user 
+  print("\nEnter your job experience")
+
+  # By default, a user has 0 past jobs
+  job_count = 0
+
+  # Job index starts at 0 to represent the first job in the experience list
+  job_index = 0
+  
+  # Infinite loop
+  while True:
+
+    # Checks if the past job limit is reached
+    if past_job_limit_reached(job_count):
+
+      # Leave the loop
+      break
+        
+    # Check to see if the user wants to add a past job
+    if user_selected_to_enter_past_job():
+  
+      # Then, read past job details
+      job_title, job_employer, job_start_date, job_end_date, job_location, job_description = read_past_job_details()
+
+      # Call these functions to set past job details 
+      userController.set_past_job_title(auth.logged_in_user["username"], job_index, job_title)
+      userController.set_past_job_employer(auth.logged_in_user["username"], job_index, job_employer)
+      userController.set_past_job_start_date(auth.logged_in_user["username"], job_index, job_start_date)
+      userController.set_past_job_end_date(auth.logged_in_user["username"], job_index, job_end_date)
+      userController.set_past_job_location(auth.logged_in_user["username"], job_index, job_location)
+      userController.set_past_job_description(auth.logged_in_user["username"], job_index, job_description)
+      
+      # Increment the job count
+      job_count += 1
+
+      # Increment the job_index
+      job_index += 1
+      
+    # If the user selected to not enter another past job
+    else:
+
+      # Leave the For Loop
+      break
+
+  # Save and exit option
+  consoleWriter.print_continue_profile_creation_menu()
+  if not user_selects_to_continue_profile_creation():
+    return title, about, job, school, degree, years
+  
   print("\nEnter your education")
   school = input("\n\t\tEnter school: ")
   degree = input("\n\t\tEnter degree: ")
   years = input("\n\t\tEnter years: ")
-
-  return title, about, experience, school, degree, years
+  
+  return title, about, job, school, degree, years
 
 
 def set_user_profile_data(username, title, about, experience, school, degree,
                           years, has_profile):
   userController.set_user_title(username, title)
   userController.set_user_about(username, about)
-  #userController.set_user_experience(username, experience)
   userController.set_user_education(username, school, degree, years)
   userController.set_has_profile(username, has_profile)
 
@@ -128,3 +208,64 @@ def get_edit_profile_options():
     "Edit Title", "Edit Major", "Edit About", "Edit Experience",
     "Edit Education"
   ]
+
+# Return True if the max number of past jobs is reached
+# Return False if the max number of past jobs is not reached
+def past_job_limit_reached(job_count):
+
+  # If the max number of past jobs is reached
+  if job_count >= 3:
+  
+    # Return True
+    return True
+  
+  # Otherwise
+  else:
+    
+    # Return False
+    return False
+    
+# "Single responsibility principle": Each function should only do one thing
+# Return True if the user selects to enter a past job
+# Return False if the user selects to not enter a past job
+def user_selected_to_enter_past_job():
+
+  # Infinite loop
+  while True:
+
+    # Ask the user if they want to enter a past job
+    add_job = input("\n\t\tAdd Job? (y/n): ") 
+    
+    # The user selects to enter a past job  
+    if (add_job == "y"):
+      
+      # Returns True to end the function
+      return True
+
+    # The user selects to NOT enter a past job
+    elif add_job == "n":    
+      
+      # Returns False to end the function
+      return False
+
+    # If the user enters anything else
+    else:
+      
+      # Indicate the input is invalid 
+      print("\nInvalid input")
+
+def user_selects_to_continue_profile_creation():
+
+  user_selection = input("Enter a selection: ")
+
+  if user_selection == "1":
+    return True
+
+  if user_selection == "2":
+    return False
+  
+  else:
+    print("Invalid input!")
+    return user_selects_to_continue_profile_creation()
+  
+

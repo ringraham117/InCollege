@@ -48,6 +48,7 @@ import src.screens.logged_in.current_friends_screen as currentfriendsScreen
 import src.screens.logged_in.find_friends_screen as findfriendsScreen
 import src.screens.logged_in.create_profile_screen as createprofileScreen
 import src.screens.logged_in.pending_friend_requests_screen as pendingrequestsScreen
+import src.screens.logged_in.show_profile_screen as showProfileScreen
 
 # Key: ScreenName Str  Value: Screenfunction of every screen
 screen_functions = {
@@ -92,5 +93,6 @@ screen_functions = {
   screenNames.PENDING_FRIEND_REQUEST_SCREEN: pendingrequestsScreen.screen,
   screenNames.FIND_FRIENDS_SCREEN: findfriendsScreen.screen,
   screenNames.CURRENT_FRIENDS_SCREEN: currentfriendsScreen.screen,
-  screenNames.CREATE_PROFILE_SCREEN: createprofileScreen.screen
+  screenNames.CREATE_PROFILE_SCREEN: createprofileScreen.screen,
+  screenNames.SHOW_PROFILE_SCREEN : showProfileScreen.screen
 }

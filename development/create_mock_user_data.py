@@ -25,7 +25,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }, {
       "username": "sasuke",
       "unique_id": "2",
@@ -49,7 +52,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+       "school": "",
+      "degree": "",
+      "years": ""      
     }, {
       "username": "sakura",
       "unique_id": "3",
@@ -73,7 +79,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }, {
       "username": "kakashi",
       "unique_id": "4",
@@ -97,7 +106,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }, {
       "username": "shikamaru",
       "unique_id": "5",
@@ -121,7 +133,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }, {
       "username": "hinata",
       "unique_id": "6",
@@ -145,7 +160,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }, {
       "username": "lee",
       "unique_id": "7",
@@ -169,7 +187,10 @@ def get_mock_user_data():
         {},
         {},
         {}
-      ]
+      ],
+      "school": "",
+      "degree": "",
+      "years": ""
     }]
   }
 

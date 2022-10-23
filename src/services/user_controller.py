@@ -272,6 +272,66 @@ def set_past_job_title(username, job_index, title):
   update_database_object(database)
 
 
+def set_past_job_employer(username, job_index, employer):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["job_employer"] = employer
+
+  update_database_object(database)
+  
+def set_past_job_start_date(username, job_index, start_date):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["start_date"] = start_date
+
+  update_database_object(database)
+
+def set_past_job_end_date(username, job_index, end_date):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["end_date"] = end_date
+
+  update_database_object(database)
+
+def set_past_job_location(username, job_index, location):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["location"] = location
+
+  update_database_object(database)
+
+def set_past_job_description(username, job_index, description):
+  database = get_database_object()
+
+  for user in database["users"]:
+    if user["username"] == username:
+
+      user_past_job_list = user["experience"]
+      selected_job = user_past_job_list[job_index]
+      selected_job["description"] = description
+
+  update_database_object(database)
+
 def set_user_university(username, university):
   database = get_database_object()
   for user in database["users"]:
@@ -280,20 +340,20 @@ def set_user_university(username, university):
   update_database_object(database)
 
 
-# def set school name - incomplete
 
-# def set_user_school_name(username, school_name):
-#   database = get_database_object()
-#   for user in database["users"]:
-#     if user["username"] == username:
-#       user["school_name"] = school_name
-#   update_database_object(database)
+  
+# def set_past_job_details(job_count, job_title, job_employer, job_start_date, job_end_date, job_location, job_description):
+  # database = get_database_object()
+  # for user in database["users"]:
+  #   if user["username"] == username:
 
-#def set_user_school_degree
-
-# def set_user_school_degree(username, school_degree):
-#   database = get_database_object()
-#   for user in database["users"]:
-#     if user["username"] == username:
-#       user["school_degree"] = school_degree
-#   update_database_object(database)
+  # user_past_job_details = user["experience"]
+   #   selected_job = user_past_job_list[job_count]
+  
+  #     selected_job["job_title"] = job_title
+  #     selected_job["job_employer"] = job_employer
+  #     selected_job["job_start_date"] = job_start_date
+  #     selected_job["job_end_date"] = job_end_date
+  #     selected_job["job_description"] = job_description
+  
+  # update_database_object(database)

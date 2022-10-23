@@ -8,9 +8,10 @@ import src.services.user_controller as userController
 import src.models.user_model as userModel
 
 screen_options = [
-  screenNames.JOB_SEARCH_SCREEN, screenNames.LEARN_NEW_SKILL_SCREEN,
+  screenNames.JOB_SEARCH_SCREEN,     
+  screenNames.LEARN_NEW_SKILL_SCREEN,
   screenNames.INCOLLEGE_IMPORTANT_LINKS_SCREEN,
-  screenNames.USEFUL_LINKS_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN, screenNames.CREATE_PROFILE_SCREEN,
+  screenNames.USEFUL_LINKS_SCREEN, screenNames.CREATE_PROFILE_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN,
   "Sign Out"
 ]
 
@@ -19,7 +20,6 @@ def screen():
   screen_display = "Welcome to Incollege " + auth.logged_in_user[
     "username"] + "!" "\n"
 
-  handle_friend_requests()
 
   user_selection = displayHandler.display_controller(screen_options,
                                                      screen_display,
@@ -65,6 +65,8 @@ def handle_friend_requests():
       else:
         notificationHandler.display_notification(
           errorMessages.INVALID_SELECTION_MESSAGE)
+
+
 
 
 def navigate_user(screen):
