@@ -6,15 +6,10 @@ import src.constants.success_messages as successMessage
 
 
 def clear_jobs_list():
-
-    # Stores a reference to the jobs dictionary
     database = get_database_object()
-    
-    # Sets the jobs list to be an empty list
     database["jobs"] = []
-    
-    # Updates the jobs database 
     update_database_object(database)
+
 
 def is_database_limit_reached():
     database = get_database_object()
@@ -32,7 +27,7 @@ def update_database_object(updated_database):
     json.dump(updated_database, database_file, indent=2)
 
 
-def add_job(job):
+def post_job(job):
     if (is_database_limit_reached()):
         notificationHandler.display_notification(
             errorMessages.JOB_DATABASE_LIMIT_MESSAGE)

@@ -5,7 +5,7 @@ import src.constants.error_messages as errorMessages
 import src.constants.success_messages as successMessages
 import src.shared.notification_handler as notificationHandler
 import src.services.user_controller as userController
-import src.models.user_model as userModel
+import src.models.profile_model as profileModel
 
 screen_options = ["Find User"]
 
@@ -53,4 +53,4 @@ def handle_find_contact():
 def get_contact_data():
     first_name = input("First Name: ")
     last_name = input("Last Name: ")
-    return userModel.User(first_name=first_name, last_name=last_name)
+    return profileModel.Profile(first_name=first_name, last_name=last_name)

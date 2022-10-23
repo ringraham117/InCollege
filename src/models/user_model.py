@@ -1,27 +1,22 @@
+import src.models.user_settings_model as userSettingsModel
+import src.models.profile_model as profileModel
+
+
 class User:
 
     def __init__(self,
-                 unique_id="",
+                 user_id="",
                  username="",
                  password="",
-                 first_name="",
-                 last_name="",
-                 university="",
-                 major="",
-                 language="English",              
-                 sms_notifications=True,
-                 email_notifications=True,
-                 ad_notifications=True):
-        self.unique_id = unique_id
+                 active_profile=False,
+                 profile=profileModel.Profile(),
+                 settings=userSettingsModel.Settings()):
+        self.user_id = user_id
         self.username = username
         self.password = password
-        self.first_name = first_name
-        self.last_name = last_name
-        self.language = language
-        self.university = university
-        self.major = major
-        self.sms_notifications = sms_notifications
-        self.email_notifications = email_notifications
-        self.ad_notifications = ad_notifications
+        self.profile = profile
+        self.active_profile = active_profile
+        self.settings = settings
+        self.jobPosts = []
         self.friends = []
         self.friend_requests = []

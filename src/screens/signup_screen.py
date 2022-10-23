@@ -8,7 +8,11 @@ import src.authentication.auth as auth
 import src.shared.password_validator as passwordValidator
 import src.constants.success_messages as successMessage
 import src.services.user_controller as userController
-import src.services.unique_id_controller as uniqueIdController
+import src.services.id_controller as idController
+import src.shared.format_input_first_upper as formatToFirstUpper
+
+import src.models.job_model as jobModel
+import src.models.profile_model as profileModel
 
 
 def screen():
@@ -25,8 +29,6 @@ def screen():
     handle_user_selection(user_selection)
 
 
-
-  
 # def handle_signup():
 #     if (screen_exists(user_selection)):
 #         navigate_user(user_selection)
@@ -48,6 +50,7 @@ def handle_signup():
 
     screen()
 
+
 def handle_user_selection(user_selection):
     if (screen_exists(user_selection)):
         navigate_user(user_selection)
@@ -60,20 +63,24 @@ def handle_user_selection(user_selection):
 
 
 def get_user_signup_data():
-    unique_id = uniqueIdController.generate_unique_id()
+    user_id = idController.generate_user_id()
     username = input("Username: ")
     password = input("Password: ")
     first_name = input("First Name: ")
     last_name = input("Last Name: ")
     university = input("University: ")
     major = input("Major: ")
-    return userModel.User(unique_id=unique_id,
+
+    major = formatToFirstUpper.format_input_first_upper(major)
+    university = formatToFirstUpper.format_input_first_upper(university)
+
+    profile = profileModel.Profile(
+        first_name=first_name, last_name=last_name, university=university, major=major)
+
+    return userModel.User(user_id=user_id,
                           username=username,
                           password=password,
-                          first_name=first_name,
-                          last_name=last_name,
-                          university=university,
-                          major=major)
+                          profile=profile)
 
 
 def navigate_user(screen):

@@ -3,6 +3,7 @@ import src.constants.screen_names as screenNames
 import src.shared.screen_display_handler as displayHandler
 import src.constants.error_messages as errorMessages
 import src.shared.notification_handler as notificationHandler
+import src.constants.success_messages as successMessages
 import src.models.user_model as userModel
 import src.authentication.auth as auth
 
@@ -31,6 +32,8 @@ def handle_user_selection(user_selection):
 def handle_login():
   user = get_user_login_data()
   if auth.authenticate_user(user):
+    notificationHandler.display_notification(
+      successMessages.SUCCESSFUL_LOGIN_MESSAGE)
     navigate_user(screenNames.USER_HOME_SCREEN)
   else:
     screen()
