@@ -1,4 +1,3 @@
-from webbrowser import get
 import src.shared.format_input_first_upper as formatToFirstUpper
 import src.services.user_controller as userController
 import src.models.education_model as educationModel
@@ -59,20 +58,37 @@ def handle_user_selection(user_selection):
         userController.set_user_about(username, about)
 
     elif user_selection == "Edit Experience":
-        job_id = input("Enter Job ID: ")
-        if userController.is_valid_job_id(user_id, job_id) == False:
-            notificationHandler.display_notification("Invalid Job ID!")
+        if len(auth.logged_in_user['profile']['experience']) == 0:
+            print("\n\033[92m" + "You have no experience to edit!" +
+                  "\033[0m")
+            experience = handle_get_experience()
+            userController.set_user_experience(username, experience)
         else:
-            experience = get_experience_data(generate_id=False)
-            userController.update_user_experience(username, job_id, experience)
+            print("\n\033[92m" + "Edit Your Experience!" + "\033[0m")
+            job_id = input("Enter Job ID: ")
+            if userController.is_valid_job_id(user_id, job_id) == False:
+                notificationHandler.display_notification("Invalid Job ID!")
+            else:
+                experience = get_experience_data(generate_id=False)
+                userController.update_user_experience(
+                    username, job_id, experience)
 
     elif user_selection == "Edit Education":
-        edu_id = input("Enter Education ID: ")
-        if userController.is_valid_edu_id(user_id, edu_id) == False:
-            notificationHandler.display_notification("Invalid Education ID!")
+        if len(auth.logged_in_user['profile']['education']) == 0:
+            print("\n\033[92m" + "You have no education to edit!" +
+                  "\033[0m")
+            education = handle_get_education()
+            userController.set_user_education(username, education)
         else:
-            education = get_education_data(generate_id=False)
-            userController.update_user_education(username, edu_id, education)
+            print("\n\033[92m" + "Edit Your Education!" + "\033[0m")
+            edu_id = input("Enter Education ID: ")
+            if userController.is_valid_edu_id(user_id, edu_id) == False:
+                notificationHandler.display_notification(
+                    "Invalid Education ID!")
+            else:
+                education = get_education_data(generate_id=False)
+                userController.update_user_education(
+                    username, edu_id, education)
 
     else:
         notificationHandler.display_notification(
@@ -179,8 +195,10 @@ def set_user_profile_data(username, title, about, experience, education,
                           active_profile):
     userController.set_user_title(username, title)
     userController.set_user_about(username, about)
-    userController.set_user_experience(username, experience)
-    userController.set_user_education(username, education)
+    if (education != None):
+        userController.set_user_education(username, education)
+    if (experience != None):
+        userController.set_user_experience(username, experience)
     userController.set_active_profile(username, active_profile)
 
 
