@@ -1,5 +1,3 @@
-from sre_parse import SPECIAL_CHARS
-
 
 def is_password_valid(password):
     special_characters = "!@#$%^&*()_+{}|:<>?[]\;',./`~"

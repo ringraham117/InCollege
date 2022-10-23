@@ -26,7 +26,7 @@ def handle_user_selection(user_selection):
                 errorMessages.NOT_LOGGED_IN_MESSAGE)
         else:
             userController.set_user_language(
-                auth.logged_in_user['unique_id'], "Spanish")
+                auth.logged_in_user['user_id'], "Spanish")
             notificationHandler.display_notification(
                 successMessages.LANGUAGE_CHANGE_SUCCESS_MESSAGE)
     elif user_selection == "English":
@@ -35,7 +35,7 @@ def handle_user_selection(user_selection):
                 errorMessages.NOT_LOGGED_IN_MESSAGE)
         else:
             userController.set_user_language(
-                auth.logged_in_user['unique_id'], "English")
+                auth.logged_in_user['user_id'], "English")
             notificationHandler.display_notification(
                 successMessages.LANGUAGE_CHANGE_SUCCESS_MESSAGE)
     else:

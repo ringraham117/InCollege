@@ -3,7 +3,7 @@ import src.constants.screen_names as screenNames
 import src.screens.startup_screen as startupScreen
 import src.screens.login_screen as loginScreen
 import src.screens.signup_screen as signupScreen
-import src.screens.job_search_screen as jobsearchScreen
+import src.screens.logged_in.job_search_screen as jobsearchScreen
 import src.screens.promotional_video_screen as promotionalvideoScreen
 import src.screens.find_contact_screen as findcontactScreen
 
@@ -38,11 +38,11 @@ import src.screens.incollege_important_links.languages_screen as languageScreen
 import src.screens.incollege_important_links.privacy_policy_screen as privacypolicyScreen
 import src.screens.incollege_important_links.user_agreement_screen as useragreementScreen
 
-
 import src.screens.logged_in.show_my_network_screen as showmynetworkScreen
 import src.screens.logged_in.user_home_screen as userhomeScreen
 import src.screens.logged_in.current_friends_screen as currentfriendsScreen
 import src.screens.logged_in.find_friends_screen as findfriendsScreen
+import src.screens.logged_in.user_profile_screen as userprofileScreen
 import src.screens.logged_in.pending_friend_requests_screen as pendingrequestsScreen
 
 # Key: ScreenName Str  Value: Screenfunction of every screen
@@ -84,5 +84,6 @@ screen_functions = {
     screenNames.SHOW_MY_NETWORK_SCREEN: showmynetworkScreen.screen,
     screenNames.PENDING_FRIEND_REQUEST_SCREEN: pendingrequestsScreen.screen,
     screenNames.FIND_FRIENDS_SCREEN: findfriendsScreen.screen,
-    screenNames.CURRENT_FRIENDS_SCREEN: currentfriendsScreen.screen
+    screenNames.CURRENT_FRIENDS_SCREEN: currentfriendsScreen.screen,
+    screenNames.USER_PROFILE_SCREEN: userprofileScreen.screen,
 }
