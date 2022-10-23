@@ -22,6 +22,8 @@ def screen():
     screen_display = "Welcome to Incollege " + auth.logged_in_user[
         "username"] + "!" "\n"
 
+    handle_friend_requests()
+
     user_selection = displayHandler.display_controller(screen_options,
                                                        screen_display,
                                                        previousScreen=False)
@@ -52,7 +54,7 @@ def handle_friend_requests():
             user_id = auth.logged_in_user["user_id"]
             request_id = friend_requests[-1]
             user = userController.get_user_by_id(request_id)
-            user_selection = input(user['first_name'] +
+            user_selection = input(user['profile']['first_name'] +
                                    " Wants to be your friend! Accept request y/n: ")
             if user_selection == 'y':
                 # Add both the send and reciever to each others friend list
