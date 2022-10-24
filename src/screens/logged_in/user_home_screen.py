@@ -20,7 +20,8 @@ def screen():
   screen_display = "Welcome to Incollege " + auth.logged_in_user[
     "username"] + "!" "\n"
 
-
+  handle_friend_requests()
+  
   user_selection = displayHandler.display_controller(screen_options,
                                                      screen_display,
                                                      previousScreen=False)

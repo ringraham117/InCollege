@@ -13,7 +13,7 @@ def get_mock_user_data():
       "sms_notifications": True,
       "email_notifications": True,
       "ad_notifications": True,
-      "friends": ['1', '2', '3'],
+      "friends": ['2', '3'],
       "friend_requests": ['4'],
       "has_profile": False,
       "title": "",
@@ -22,9 +22,30 @@ def get_mock_user_data():
       "about": "",
       "education": "",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",
@@ -49,9 +70,30 @@ def get_mock_user_data():
       " I am a computer science student at USF. I am looking for a roommate to share an apartment with.",
       "education": "Community College",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
        "school": "",
       "degree": "",
@@ -76,9 +118,30 @@ def get_mock_user_data():
       "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
       "education": "High School",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",
@@ -103,9 +166,30 @@ def get_mock_user_data():
       "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
       "education": "High School",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",
@@ -130,9 +214,30 @@ def get_mock_user_data():
       "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
       "education": "High School",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",
@@ -157,9 +262,30 @@ def get_mock_user_data():
       "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",      
       "education": "High School",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",
@@ -184,9 +310,30 @@ def get_mock_user_data():
       "I am a computer science student at USF. I am looking for a roommate to share an apartment with.",    
       "education": "High School",
       "experience": [
-        {},
-        {},
-        {}
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        },
+        {
+          "job_title": "",
+          "job_employer": "",
+          "start_date": "",
+          "end_date": "",
+          "location": "",
+          "description": ""
+        }
       ],
       "school": "",
       "degree": "",

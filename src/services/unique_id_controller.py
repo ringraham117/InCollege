@@ -12,7 +12,8 @@ def generate_unique_id():
   unique_id = database['unique_id']
 
   updated_id = str(int(unique_id) + 1)
-  database['id'] = updated_id
+  database['unique_id'] = updated_id 
+# what was the actual issue oh okay i see. well cool! thanks!
   update_unique_id(database)
   return unique_id
 

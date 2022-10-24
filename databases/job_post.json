@@ -7,38 +7,6 @@
       "employer": "META",
       "location": "SAN FRANCISCO",
       "salary": "$$$"
-    },
-    {
-      "user": "jeffG",
-      "title": "Robotics Programmer",
-      "descriptionage": "program and troubleshoot",
-      "employer": "Fineline Robotics",
-      "location": "traveling",
-      "salary": "150000"
-    },
-    {
-      "user": "naruto",
-      "title": "intern",
-      "descriptionage": "summer intern",
-      "employer": "inCollege",
-      "location": "Tampa",
-      "salary": "$31/hr"
-    },
-    {
-      "user": "naruto",
-      "title": "co-op software engineer",
-      "descriptionage": "Fall 2022 Co-op",
-      "employer": "Johnson and Johnson",
-      "location": "Tampa, FL",
-      "salary": "Negotitable"
-    },
-    {
-      "user": "naruto",
-      "title": "sdf",
-      "descriptionage": "asd",
-      "employer": "fa",
-      "location": "sdf",
-      "salary": "sdf"
     }
   ]
 }

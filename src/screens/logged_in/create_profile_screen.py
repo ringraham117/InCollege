@@ -2,6 +2,7 @@ import src.authentication.auth as auth
 import src.constants.screen_names as screenNames
 import src.constants.error_messages as errorMessages
 import src.routing.router as router
+import src.screens.logged_in.edit_education_screen as editEducationScreen
 import src.services.user_controller as userController
 import src.shared.console_writer as consoleWriter
 import src.shared.format_input_first_upper as formatToFirstUpper
@@ -47,6 +48,12 @@ def handle_user_selection(user_selection):
     title = input("\nEnter title: ")
     userController.set_user_title(username, title)
 
+  elif user_selection == "Edit University":
+    university = input("\nEnter university: ")
+    university = formatToFirstUpper.format_input_first_upper(university)
+    userController.set_user_university(username, university)
+
+
   elif user_selection == "Edit Major":
     major = input("\nEdit Major: ")
     major = formatToFirstUpper.format_input_first_upper(major)
@@ -64,12 +71,6 @@ def handle_user_selection(user_selection):
   elif user_selection == "Edit Education":
     navigate_user(screenNames.EDIT_EDUCATION_SCREEN)
 
-    print("\nEdit Education: ")
-    school = input("\n\t\tEnter school: ")
-    degree = input("\n\t\tEnter degree: ")
-    years = input("\n\t\tEnter years: ")
-    userController.set_user_education(username, school, degree, years)
-
   else:
     notificationHandler.display_notification(
       errorMessages.INVALID_SELECTION_MESSAGE)
@@ -85,15 +86,6 @@ def navigate_user(screen):
 
 def screen_exists(user_selection):
   return user_selection in screenNames.screens
-
-
-def get_user_education():
-  print("\nEnter your education")
-  school = input("\n\t\tEnter school: ")
-  degree = input("\n\t\tEnter degree: ")
-  years = input("\n\t\tEnter years: ")
-
-  return school, degree, years
 
 
 def read_past_job_details():
@@ -181,11 +173,8 @@ def get_user_profile_data():
   consoleWriter.print_continue_profile_creation_menu()
   if not user_selects_to_continue_profile_creation():
     return title, about, job, school, degree, years
-  
-  print("\nEnter your education")
-  school = input("\n\t\tEnter school: ")
-  degree = input("\n\t\tEnter degree: ")
-  years = input("\n\t\tEnter years: ")
+
+  school, degree, years = editEducationScreen.get_user_education()
   
   return title, about, job, school, degree, years
 
@@ -197,15 +186,39 @@ def set_user_profile_data(username, title, about, experience, school, degree,
   userController.set_user_education(username, school, degree, years)
   userController.set_has_profile(username, has_profile)
 
+# Prints job information for user profiles
+def get_formatted_job_experience(user, job_param):
 
+  past_job_list = user["experience"]
+
+  if job_param == "job_1":
+    job = past_job_list[0]
+    job_id = "1"
+  
+  elif job_param == "job_2":
+    job = past_job_list[1]
+    job_id = "2"
+  
+  elif job_param == "job_3":
+    job = past_job_list[2]
+    job_id = "3"
+  
+  new_line = "\n"
+  tab = "\t"
+  double_tab = "\t\t"
+  
+  # Title, employer, start date, end date, location, description
+  return new_line + tab + "Job " + job_id + new_line + double_tab + "Title: " + job["job_title"] + new_line + double_tab + "Employer: " + job["job_employer"] + new_line + double_tab + "Start date: " + job["start_date"] + new_line + double_tab + "End date: " + job["end_date"] + new_line + double_tab + "Location: " + job["location"] + new_line + double_tab + "Description: " + job["description"]
+
+# Displays the user's profile
 def get_profile_display(title, university, major, about, school,
                         degree, years):
-  return "\nTitle: " + title + "\nUniversity: " + university + "\nMajor: " + major + "\nAbout: " + about + "\nExperience: " + "TESTING" + "\nEducation: " + school + ", " + degree + ", " + years
+  return "\nTitle: " + title + "\nUniversity: " + university + "\nMajor: " + major + "\nAbout: " + about + "\nExperience:" + get_formatted_job_experience(auth.logged_in_user, "job_1") + get_formatted_job_experience(auth.logged_in_user, "job_2") + get_formatted_job_experience(auth.logged_in_user, "job_3") + "\nEducation: " + school + ", " + degree + ", " + years
 
 
 def get_edit_profile_options():
   return [
-    "Edit Title", "Edit Major", "Edit About", "Edit Experience",
+    "Edit Title", "Edit University", "Edit Major", "Edit About", "Edit Experience",
     "Edit Education"
   ]
 
@@ -254,6 +267,8 @@ def user_selected_to_enter_past_job():
       # Indicate the input is invalid 
       print("\nInvalid input")
 
+# Returns True if the user selects to continue creating their profile
+# Returns False if the user selects to stop profile creation
 def user_selects_to_continue_profile_creation():
 
   user_selection = input("Enter a selection: ")
@@ -265,7 +280,7 @@ def user_selects_to_continue_profile_creation():
     return False
   
   else:
-    print("Invalid input!")
+    print("\nInvalid input!\n")
     return user_selects_to_continue_profile_creation()
   
 

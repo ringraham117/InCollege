@@ -39,9 +39,30 @@ class User:
     self.about = about
     self.profile =  ""
     self.experience = [
-      {},
-      {},
-      {}
+      {
+        "job_title": "",
+        "job_employer": "",
+        "start_date": "",
+        "end_date": "",
+        "location": "",
+        "description": ""
+      },
+      {
+        "job_title": "",
+        "job_employer": "",
+        "start_date": "",
+        "end_date": "",
+        "location": "",
+        "description": ""
+      },
+      {
+        "job_title": "",
+        "job_employer": "",
+        "start_date": "",
+        "end_date": "",
+        "location": "",
+        "description": ""
+      }
     ]
      
 

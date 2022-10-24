@@ -1,10 +1,12 @@
-import src.routing.router as router
 import src.authentication.auth as auth
-import src.constants.screen_names as screenNames
-import src.shared.screen_display_handler as displayHandler
 import src.constants.error_messages as errorMessages
-import src.shared.notification_handler as notificationHandler
+import src.constants.screen_names as screenNames
+import src.routing.router as router
+import src.screens.logged_in.create_profile_screen as createProfileScreen
 import src.services.user_controller as userController
+import src.shared.notification_handler as notificationHandler
+import src.shared.screen_display_handler as displayHandler
+
 
 screen_options = ["Show Current Friends", "Unfriend", "Show Friend Profile"]
 
@@ -89,8 +91,8 @@ def display_user_profile(user):
           "\033[92m" + "\nUniversity: " + "\033[0m" + user['university'],
           "\033[92m" + "\nMajor: " + "\033[0m" + user['major'],
           "\033[92m" + "\nAbout: " + "\033[0m" + user['about'],
-          "\033[92m" + "\nExperience: " + "\033[0m" + user['experience'],
-          "\033[92m" + "\nEducation: " + "\033[0m" + user['education'])
+          "\033[92m" + "\nExperience: " + "\033[0m" + createProfileScreen.get_formatted_job_experience(user, "job_1") + createProfileScreen.get_formatted_job_experience(user, "job_2") + createProfileScreen.get_formatted_job_experience(user, "job_3") +
+          "\033[92m" + "\nEducation: " + "\033[0m" + user["school"] + ", " + user["degree"] + ", " + user["years"])
   else:
     notificationHandler.display_notification("User doesn't have a profile")
 
