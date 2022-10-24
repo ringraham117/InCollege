@@ -8,9 +8,10 @@ import src.services.user_controller as userController
 import src.models.user_model as userModel
 
 screen_options = [
-  screenNames.JOB_SEARCH_SCREEN, screenNames.LEARN_NEW_SKILL_SCREEN,
+  screenNames.JOB_SEARCH_SCREEN,     
+  screenNames.LEARN_NEW_SKILL_SCREEN,
   screenNames.INCOLLEGE_IMPORTANT_LINKS_SCREEN,
-  screenNames.USEFUL_LINKS_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN,
+  screenNames.USEFUL_LINKS_SCREEN, screenNames.CREATE_PROFILE_SCREEN, screenNames.SHOW_MY_NETWORK_SCREEN,
   "Sign Out"
 ]
 
@@ -20,7 +21,7 @@ def screen():
     "username"] + "!" "\n"
 
   handle_friend_requests()
-
+  
   user_selection = displayHandler.display_controller(screen_options,
                                                      screen_display,
                                                      previousScreen=False)
@@ -54,7 +55,7 @@ def handle_friend_requests():
       user_selection = input(user['first_name'] +
                              " Wants to be your friend! Accept request y/n: ")
       if user_selection == 'y':
-        # Add both he send and reciever to each others friend list
+        # Add both the send and reciever to each others friend list
         userController.add_user_to_friends(user_id, request_id)
         userController.add_user_to_friends(request_id, user_id)
         userController.delete_user_friend_request(user_id, request_id)
@@ -65,6 +66,8 @@ def handle_friend_requests():
       else:
         notificationHandler.display_notification(
           errorMessages.INVALID_SELECTION_MESSAGE)
+
+
 
 
 def navigate_user(screen):

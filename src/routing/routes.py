@@ -1,5 +1,9 @@
 import src.constants.screen_names as screenNames
 
+
+import src.screens.logged_in.edit_education_screen as editEducationScreen
+import src.screens.logged_in.edit_experience_screen as editExperienceScreen
+import src.screens.logged_in.edit_job_screen as editJobScreen
 import src.screens.startup_screen as startupScreen
 import src.screens.login_screen as loginScreen
 import src.screens.signup_screen as signupScreen
@@ -38,51 +42,57 @@ import src.screens.incollege_important_links.languages_screen as languageScreen
 import src.screens.incollege_important_links.privacy_policy_screen as privacypolicyScreen
 import src.screens.incollege_important_links.user_agreement_screen as useragreementScreen
 
-
 import src.screens.logged_in.show_my_network_screen as showmynetworkScreen
 import src.screens.logged_in.user_home_screen as userhomeScreen
 import src.screens.logged_in.current_friends_screen as currentfriendsScreen
 import src.screens.logged_in.find_friends_screen as findfriendsScreen
+import src.screens.logged_in.create_profile_screen as createprofileScreen
 import src.screens.logged_in.pending_friend_requests_screen as pendingrequestsScreen
+import src.screens.logged_in.show_profile_screen as showProfileScreen
 
 # Key: ScreenName Str  Value: Screenfunction of every screen
 screen_functions = {
-    screenNames.STARTUP_SCREEN: startupScreen.screen,
-    screenNames.LOGIN_SCREEN: loginScreen.screen,
-    screenNames.SIGNUP_SCREEN: signupScreen.screen,
-    screenNames.JOB_SEARCH_SCREEN: jobsearchScreen.screen,
-    screenNames.USER_HOME_SCREEN: userhomeScreen.screen,
-    screenNames.USEFUL_LINKS_SCREEN: usefulLinksScreen.screen,
-    screenNames.BROWSE_INCOLLEGE_SCREEN: browseInCollegeScreen.screen,
-    screenNames.BUSSINESS_SOLUTIONS_SCREEN: bussinessSolutionScreen.screen,
-    screenNames.DIRECTORIES_SCREEN: directoriesScreen.screen,
-    screenNames.GENERAL_SCREEN: generalScreen.screen,
-    screenNames.ABOUT_SCREEN: aboutScreen.screen,
-    screenNames.BLOG_SCREEN: blogScreen.screen,
-    screenNames.CAREERS_SCREEN: careerScreen.screen,
-    screenNames.DEVELOPERS_SCREEN: developersScreen.screen,
-    screenNames.HELP_CENTER_SCREEN: helpcenterScreen.screen,
-    screenNames.PRESS_SCREEN: pressScreen.screen,
-    screenNames.LEARN_NEW_SKILL_SCREEN: learnnewskillScreen.screen,
-    screenNames.CODING_SCREEN: codingScreen.screen,
-    screenNames.COMMUNICATION_SCREEN: communicationScreen.screen,
-    screenNames.MICROSOFT_EXCEL_SCREEN: microsoftexcelScreen.screen,
-    screenNames.WEB_DEVELOPMENT_SCREEN: webdevelopmentScreen.screen,
-    screenNames.RESUME_CRITIQUE_SCREEN: resumecritiqueScreen.screen,
-    screenNames.INCOLLEGE_IMPORTANT_LINKS_SCREEN: importantlinksScreen.screen,
-    screenNames.ACCESSIBILITY_SCREEN: accessibilityScreen.screen,
-    screenNames.BRAND_POLICY_SCREEN: brandpolicyScreen.screen,
-    screenNames.COOKIE_POLICY_SCREEN: cookiepolicyScreen.screen,
-    screenNames.COPYRIGHT_NOTICE_SCREEN: copyrightnoticeScreen.screen,
-    screenNames.COPYRIGHT_POLICY_SCREEN: copyrightpolicyScreen.screen,
-    screenNames.GUEST_CONTROLS_SCREEN: guestcontrollsScreen.screen,
-    screenNames.LANGUAGE_SCREEN: languageScreen.screen,
-    screenNames.PRIVACY_POLICY_SCREEN: privacypolicyScreen.screen,
-    screenNames.USER_AGREEMENT_SCREEN: useragreementScreen.screen,
-    screenNames.PROMOTIONAL_VIDEO_SCREEN: promotionalvideoScreen.screen,
-    screenNames.FIND_CONTACT_SCREEN: findcontactScreen.screen,
-    screenNames.SHOW_MY_NETWORK_SCREEN: showmynetworkScreen.screen,
-    screenNames.PENDING_FRIEND_REQUEST_SCREEN: pendingrequestsScreen.screen,
-    screenNames.FIND_FRIENDS_SCREEN: findfriendsScreen.screen,
-    screenNames.CURRENT_FRIENDS_SCREEN: currentfriendsScreen.screen
+  screenNames.EDIT_EDUCATION_SCREEN: editEducationScreen.screen,
+  screenNames.EDIT_EXPERIENCE_SCREEN: editExperienceScreen.screen,
+  screenNames.EDIT_JOB_SCREEN: editJobScreen.screen,
+  screenNames.STARTUP_SCREEN: startupScreen.screen,
+  screenNames.LOGIN_SCREEN: loginScreen.screen,
+  screenNames.SIGNUP_SCREEN: signupScreen.screen,
+  screenNames.JOB_SEARCH_SCREEN: jobsearchScreen.screen,
+  screenNames.USER_HOME_SCREEN: userhomeScreen.screen,
+  screenNames.USEFUL_LINKS_SCREEN: usefulLinksScreen.screen,
+  screenNames.BROWSE_INCOLLEGE_SCREEN: browseInCollegeScreen.screen,
+  screenNames.BUSSINESS_SOLUTIONS_SCREEN: bussinessSolutionScreen.screen,
+  screenNames.DIRECTORIES_SCREEN: directoriesScreen.screen,
+  screenNames.GENERAL_SCREEN: generalScreen.screen,
+  screenNames.ABOUT_SCREEN: aboutScreen.screen,
+  screenNames.BLOG_SCREEN: blogScreen.screen,
+  screenNames.CAREERS_SCREEN: careerScreen.screen,
+  screenNames.DEVELOPERS_SCREEN: developersScreen.screen,
+  screenNames.HELP_CENTER_SCREEN: helpcenterScreen.screen,
+  screenNames.PRESS_SCREEN: pressScreen.screen,
+  screenNames.LEARN_NEW_SKILL_SCREEN: learnnewskillScreen.screen,
+  screenNames.CODING_SCREEN: codingScreen.screen,
+  screenNames.COMMUNICATION_SCREEN: communicationScreen.screen,
+  screenNames.MICROSOFT_EXCEL_SCREEN: microsoftexcelScreen.screen,
+  screenNames.WEB_DEVELOPMENT_SCREEN: webdevelopmentScreen.screen,
+  screenNames.RESUME_CRITIQUE_SCREEN: resumecritiqueScreen.screen,
+  screenNames.INCOLLEGE_IMPORTANT_LINKS_SCREEN: importantlinksScreen.screen,
+  screenNames.ACCESSIBILITY_SCREEN: accessibilityScreen.screen,
+  screenNames.BRAND_POLICY_SCREEN: brandpolicyScreen.screen,
+  screenNames.COOKIE_POLICY_SCREEN: cookiepolicyScreen.screen,
+  screenNames.COPYRIGHT_NOTICE_SCREEN: copyrightnoticeScreen.screen,
+  screenNames.COPYRIGHT_POLICY_SCREEN: copyrightpolicyScreen.screen,
+  screenNames.GUEST_CONTROLS_SCREEN: guestcontrollsScreen.screen,
+  screenNames.LANGUAGE_SCREEN: languageScreen.screen,
+  screenNames.PRIVACY_POLICY_SCREEN: privacypolicyScreen.screen,
+  screenNames.USER_AGREEMENT_SCREEN: useragreementScreen.screen,
+  screenNames.PROMOTIONAL_VIDEO_SCREEN: promotionalvideoScreen.screen,
+  screenNames.FIND_CONTACT_SCREEN: findcontactScreen.screen,
+  screenNames.SHOW_MY_NETWORK_SCREEN: showmynetworkScreen.screen,
+  screenNames.PENDING_FRIEND_REQUEST_SCREEN: pendingrequestsScreen.screen,
+  screenNames.FIND_FRIENDS_SCREEN: findfriendsScreen.screen,
+  screenNames.CURRENT_FRIENDS_SCREEN: currentfriendsScreen.screen,
+  screenNames.CREATE_PROFILE_SCREEN: createprofileScreen.screen,
+  screenNames.SHOW_PROFILE_SCREEN : showProfileScreen.screen
 }
